@@ -1,36 +1,41 @@
 #pragma once
 #include "Edge.h"
+#include "IGameObject.h"
 #include <vector>
-
+#include <string>
 class Edge;
 
-class Node
+class Node : public IGameObject
 {
 public:
-	Node(char ch, int loc_x, int loc_y){
+	Node(std::string ch, int loc_x, int loc_y){
 		this->ch = ch;
 		this->x = loc_x;
-		this->w = loc_y;
+		this->y = loc_y;
 
 
-		this->h = 10;
-		this->w = 10;
+		this->h = 25;
+		this->w = 25;
 				
 	}
 	~Node();
 	Node();
 
-	void draw()
-	{
+	virtual void Draw() override;
+	virtual void Update(float deltaTime) override;
 
+	void addEgde(Edge* edge)
+	{
+		this->edges.push_back(edge);
 	}
+
 	std::vector<Edge*> edges;
 	int weight;
 	int x;
 	int y;
 		int h;
 	int w;
-	char ch;
+	std::string ch;
 	
 
 };

@@ -23,19 +23,62 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 
-	std::vector<Node*> nodes;
+	Node* a = new Node("A", 100, 200);
+	Node* b = new Node("B", 200, 100);
+	Node* c= new Node("C", 370, 100);
+	Node* d= new Node("D", 300, 180);
+	Node* e= new Node("E", 450, 200);
+	Node* f= new Node("F", 200, 300);
+	Node* g= new Node("G", 330, 300);
 
 
 
 
-	for (int i = 0; i < 11; i++){
-		
-		nodes.push_back(new Node(i, 10*i,10*i));
 
-	}
+
+	/*Node* h= new Node("H", 425, 360);
+	Node* i= new Node("I", 550, 480);
+	Node* j= new Node("K", 600, 378); 
+	*/
+	Edge* ab = new Edge(a,b,5);
+	Edge* bc = new Edge(b,c,10);
+	Edge* bd = new Edge(b, d,8);
+	Edge* dc = new Edge(d, c,6);
+	Edge* dg = new Edge(d, g,4);
+	Edge* fd = new Edge(f, d,3);
+	Edge* af = new Edge(a, f,9);
+	Edge* fg = new Edge(f, g,2);
+		Edge* ge = new Edge(g, e,7);
+
+	//	Edge* de = new Edge(d,e,);
+		Edge* ce = new Edge(c, e,1);
+	application->AddRenderable(a);
+	application->AddRenderable(b);
+	application->AddRenderable(c);
+	application->AddRenderable(d);
+	application->AddRenderable(e);
+	application->AddRenderable(f);
+	application->AddRenderable(g);
+
+	application->AddRenderable(ab);
+	application->AddRenderable(bc);
+	application->AddRenderable(bd);
+	application->AddRenderable(dc);
+
+	application->AddRenderable(dg);
+	application->AddRenderable(fd);
+
+	application->AddRenderable(af);
+	application->AddRenderable(fg);
+	application->AddRenderable(ge);
+	application->AddRenderable(ce);
 
 
 	//while (true){}
+
+
+
+
 	while (application->IsRunning())
 	{
 		application->StartTick();
@@ -58,7 +101,7 @@ int main(int args[])
 		}
 		
 		application->SetColor(Color(0, 0, 0, 255));
-		application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
+		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500 );
 		
 		// For the background
 	
@@ -72,11 +115,7 @@ int main(int args[])
 		application->EndTick();
 
 
-		for (Node *n : nodes)
-		{
-			application->SetColor(Color(0, 0, 0, 0));
-			application->DrawRect(n->x, n->y, n->w, n->h, true);
-		}
+		
 		application->SetColor(Color(255, 255, 255, 255));
 
 	}
