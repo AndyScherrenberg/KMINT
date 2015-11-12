@@ -5,7 +5,8 @@
 #include "SDL_timer.h"
 #include <time.h>
 #include "Node.h"
-
+#include "Koetje.h"
+#include "Haasje.h"
 int main(int args[])
 {
 	//auto window = Window::CreateSDLWindow();
@@ -76,8 +77,10 @@ int main(int args[])
 
 	//while (true){}
 
-
-
+	Koetje* vkoef = new Koetje();
+	Haasje* haas = new Haasje();
+	application->AddRenderable(vkoef);
+	application->AddRenderable(haas);
 
 	while (application->IsRunning())
 	{

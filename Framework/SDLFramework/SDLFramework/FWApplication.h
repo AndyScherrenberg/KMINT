@@ -250,6 +250,8 @@ private:
 	SDL_Window * mWindow;
 	SDL_Renderer * mRenderer;
 
+	
+
 	uint32_t mTimeMS;
 	uint32_t mTargetDelayMS;
 	uint32_t mStartCycleTimeMS;

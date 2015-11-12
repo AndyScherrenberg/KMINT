@@ -84,8 +84,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Beestje.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="Haasje.cpp" />
+    <ClCompile Include="Koetje.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Node.cpp" />
   </ItemGroup>
@@ -93,10 +96,13 @@
     <None Include="SDL2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Beestje.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FWApplication.h" />
+    <ClInclude Include="Haasje.h" />
     <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="Koetje.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -26,6 +26,15 @@
     <ClCompile Include="Edge.cpp">
       <Filter>Week1</Filter>
     </ClCompile>
+    <ClCompile Include="Koetje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Haasje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Beestje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -44,6 +53,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Edge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Koetje.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Haasje.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Beestje.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

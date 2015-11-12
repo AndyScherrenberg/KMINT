@@ -61,6 +61,8 @@ FWApplication::FWApplication(int offsetX, int offsetY, int width, int height)
 	SetFontSize(12);
 	SetFont("OpenSans-Regular.ttf");
 
+	
+
 	mInstance = this;
 	mGameObjects.reserve(32);
 }
