@@ -79,6 +79,14 @@ int main(int args[])
 
 	Koetje* vkoef = new Koetje();
 	Haasje* haas = new Haasje();
+
+
+	vkoef->setNode(a);
+	a->setBeestje(vkoef);
+	haas->setNode(e);
+	e->setBeestje(haas);
+
+
 	application->AddRenderable(vkoef);
 	application->AddRenderable(haas);
 
@@ -105,7 +113,7 @@ int main(int args[])
 		
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500 );
-		
+		application->DrawText("Groen is koe, Oranje is haas", 120, 520);
 		// For the background
 	
 

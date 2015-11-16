@@ -3,7 +3,10 @@
 #include "IGameObject.h"
 #include <vector>
 #include <string>
+#include "Beestje.h"
+
 class Edge;
+class Beestje;
 
 class Node : public IGameObject
 {
@@ -16,7 +19,7 @@ public:
 
 		this->h = 25;
 		this->w = 25;
-				
+
 	}
 	~Node();
 	Node();
@@ -33,10 +36,14 @@ public:
 	int weight;
 	int x;
 	int y;
-		int h;
+	int h;
 	int w;
 	std::string ch;
-	
 
+	
+	void setBeestje(Beestje* beestje){ this->beestje = beestje; };
+	Beestje* getBeestje(){ return this->beestje; };
+private:
+	Beestje* beestje;
 };
 

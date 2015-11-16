@@ -1,5 +1,8 @@
 #pragma once
 #include "IGameObject.h"
+#include "Node.h"
+
+class Node;
 
 class Beestje : public IGameObject
 {
@@ -11,6 +14,10 @@ public:
 	virtual void Update(float deltaTime) override;
 
 
+	Node* getNode(){ return currentNode; };
+	void setNode(Node* node){ this->currentNode = node; };
+private: 
+	Node* currentNode;
 
 
 };
