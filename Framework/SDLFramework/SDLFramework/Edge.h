@@ -22,7 +22,8 @@ public:
 	void setNode2(Node* node){
 		this->nodeB = node;
 	}
-
+    
+    int getWeight(){return weight;}
 
 	Node* getNode(Node* node)
 	{

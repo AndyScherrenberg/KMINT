@@ -44,9 +44,6 @@ int main()
 	nodeList.push_back(f);
 	nodeList.push_back(g);
 
-
-
-
 	/*Node* h= new Node("H", 425, 360);
 	Node* i= new Node("I", 550, 480);
 	Node* j= new Node("K", 600, 378); 
@@ -59,18 +56,19 @@ int main()
 	Edge* fd = new Edge(f, d,3);
 	Edge* af = new Edge(a, f,9);
 	Edge* fg = new Edge(f, g,2);
-		Edge* ge = new Edge(g, e,7);
+    Edge* ge = new Edge(g, e,7);
 
 	//	Edge* de = new Edge(d,e,);
 		Edge* ce = new Edge(c, e,1);
-	application->AddRenderable(a);
+	//Draw Nodes
+    application->AddRenderable(a);
 	application->AddRenderable(b);
 	application->AddRenderable(c);
 	application->AddRenderable(d);
 	application->AddRenderable(e);
 	application->AddRenderable(f);
 	application->AddRenderable(g);
-
+    //Draw Edges
 	application->AddRenderable(ab);
 	application->AddRenderable(bc);
 	application->AddRenderable(bd);
@@ -93,18 +91,16 @@ int main()
 
 	vkoef->setNode(a);
 	a->setBeestje(vkoef);
+    
 	haas->setNode(e);
 	e->setBeestje(haas);
-
-
-
 
 	application->AddRenderable(vkoef);
 	application->AddRenderable(haas);
 
 
 	AlgoRitmeWeek1 week;
-	week.doAction(a, nodeList);
+	//week.doAction(vkoef, nodeList,haas->getNode());
 
 	while (application->IsRunning())
 	{
@@ -120,7 +116,7 @@ int main()
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-
+                    case SDLK_SPACE: week.doAction(vkoef, nodeList,haas->getNode());break;
 				default:
 					break;
 				}
@@ -132,17 +128,10 @@ int main()
 		application->DrawText("Groen is koe, Oranje is haas", 120, 520);
 		// For the background
 	
-
-
-
-	
-
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
 		application->EndTick();
-
-
-		
+ 
 		application->SetColor(Color(255, 255, 255, 255));
 
 	}

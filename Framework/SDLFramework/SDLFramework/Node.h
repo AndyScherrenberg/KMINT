@@ -31,19 +31,28 @@ public:
 	{
 		this->edges.push_back(edge);
 	}
+    
+    bool operator < (const Node& str) const
+    {
+        return (travelCost < str.travelCost);
+    }
 
 	std::vector<Edge*> edges;
 	int weight;
 	int x;
 	int y;
-	int h;
-	int w;
+	int h; // hoogte blokje
+	int w; //breedte blokje
 	std::string ch;
+    
+    //Algortime
+    int travelCost = -1;
+    Node* traveledFrom;
 
-	
 	void setBeestje(Beestje* beestje){ this->beestje = beestje; };
 	Beestje* getBeestje(){ return this->beestje; };
+    
 private:
-	Beestje* beestje;
+        Beestje* beestje;
 };
 
