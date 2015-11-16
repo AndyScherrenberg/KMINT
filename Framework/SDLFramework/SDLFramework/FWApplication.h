@@ -3,7 +3,7 @@
 #include <functional>
 #include <cstdint>
 #include <vector>
-
+#include <string>
 class IGameObject;
 struct SDL_Renderer;
 struct SDL_Window;

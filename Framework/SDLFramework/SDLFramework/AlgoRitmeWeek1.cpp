@@ -1,6 +1,10 @@
 #include "AlgoRitmeWeek1.h"
 #include "Haasje.h"
-#include <io.h>
+#ifdef __APPLE__
+#include <sys/uio.h>
+#else
+#include <sys/io.h>
+#endif
 #include <iostream>
 AlgoRitmeWeek1::AlgoRitmeWeek1()
 {
@@ -31,12 +35,17 @@ void AlgoRitmeWeek1::doAction(Node* currentnode, std::vector<Node*> collection){
 			Node* toNode = (*edge)->getNode(current);
 			NodetoNode.insert(std::pair<Node*, Node*>(current, toNode));
 		}
+        
+    #ifdef __APPLE__
+        if ((*it)->getBeestje())
+            destination = (*it);
+    #else
+        if (dynamic_cast<Haasje*>((*it)->getBeestje()))
+            destination = (*it);
+    #endif
+        
 
-
-		if (dynamic_cast<Haasje*>((*it)->getBeestje()))
-			destination = (*it);
-
-	}
+    }
 	std::cout << "Nice";
 
 

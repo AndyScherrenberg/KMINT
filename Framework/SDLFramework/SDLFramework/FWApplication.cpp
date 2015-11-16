@@ -16,7 +16,7 @@ FWApplication::FWApplication(int offsetX, int offsetY, int width, int height)
 	mTimeMS(0),
 	mIsRunning(true),
 	mFontSize(12),
-	mFontName("")
+    mFontName("")
 	//mTextBackgroundColor(0xFF,0xFF,0xFF,0xFF)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -99,15 +99,24 @@ bool FWApplication::IsRunning()
 
 std::string FWApplication::GetRelativePath(const std::string & path) const
 {
-	std::string basePath = SDL_GetBasePath();
-	return basePath + ".." + PATH_SEP + path; //  + PATH_SEP
+#ifdef __APPLE__
+    std::string basePath = SDL_GetBasePath();
+    return basePath + "../" + path;
+#else
+    std::string basePath = SDL_GetBasePath();
+    return basePath + ".." + PATH_SEP + path;
+#endif
 	//size_t pos = basePath.rfind("Debug");
 	//return basePath.substr(0, basePath.rfind("Debug")) + path + PATH_SEP; //  + "resources" + PATH_SEP
 }
 
 SDL_Texture * FWApplication::LoadTexture(const std::string & fileName)
 {
-	const std::string path = GetRelativePath("Resources" PATH_SEP + fileName);
+    #ifdef __APPLE__
+    const std::string path = GetRelativePath("Resources/" + fileName);
+    #else
+        const std::string path = GetRelativePath("Resources" + PATH_SEP + fileName);
+    #endif
 	SDL_Surface * surface = IMG_Load(path.c_str());
 	if (surface)
 	{
@@ -332,7 +341,7 @@ uint32_t FWApplication::GetTimeSinceStartedMS() const
 
 void FWApplication::DrawText(const std::string & message, uint32_t offsetX, uint32_t offsetY)
 {
-	SDL_Color color = { mColor.r, mColor.g, mColor.b, mColor.a };
+	SDL_Color color = { static_cast<Uint8>(mColor.r), static_cast<Uint8>(mColor.g), static_cast<Uint8>(mColor.b), static_cast<Uint8>(mColor.a) };
 	//SDL_Color bgColor = { mTextBackgroundColor.r, mTextBackgroundColor.g, mTextBackgroundColor.b, mTextBackgroundColor.a };
 
 	SDL_Surface * surface = TTF_RenderText_Blended(mFont, message.c_str(), color);
@@ -360,17 +369,22 @@ void FWApplication::SetFontSize(int ptSize)
 
 void FWApplication::SetFont(const std::string & filename)
 {
-	if (mFont)
-	{
-		TTF_CloseFont(mFont);
-	}
 
 	mFontName = filename;
-	mFont = TTF_OpenFont(GetRelativePath("Resources/" + filename).c_str(), mFontSize);
+    #ifdef __APPLE__
+    const char *file = "/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/OpenSans-Regular.ttf";
+    mFont = TTF_OpenFont(file, mFontSize);
+    #else
+    mFont = TTF_OpenFont(GetRelativePath("Resources/" + filename).c_str(), mFontSize);
+    #endif
 }
 
 void FWApplication::Quit()
 {
+    if (mFont)
+    {
+        TTF_CloseFont(mFont);
+    }
 	mIsRunning = false;
 }
 

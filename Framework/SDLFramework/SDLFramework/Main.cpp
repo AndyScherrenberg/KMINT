@@ -8,7 +8,7 @@
 #include "Koetje.h"
 #include "Haasje.h"
 #include "AlgoRitmeWeek1.h"
-int main(int args[])
+int main()
 {
 	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
