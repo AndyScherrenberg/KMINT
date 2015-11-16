@@ -9,7 +9,7 @@ public:
 	AlgoRitmeWeek1();
 	~AlgoRitmeWeek1();
 
-	void doAction(Node* currentnode);
-	bool doAlgoritme(std::map<Node*, int> &mapRoomWeight, std::map<Node *, Node *> &fromTo);
+	void doAction(Node* currentnode, std::vector<Node*> collection);
+	bool doAlgoritme(std::map<Node*, int> &edgeWeight, std::map<Node *, Node *> &fromTo);
 };
 

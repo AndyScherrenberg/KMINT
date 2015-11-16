@@ -7,6 +7,7 @@
 #include "Node.h"
 #include "Koetje.h"
 #include "Haasje.h"
+#include "AlgoRitmeWeek1.h"
 int main(int args[])
 {
 	//auto window = Window::CreateSDLWindow();
@@ -24,6 +25,9 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 
+
+	std::vector<Node*> nodeList;
+
 	Node* a = new Node("A", 100, 200);
 	Node* b = new Node("B", 200, 100);
 	Node* c= new Node("C", 370, 100);
@@ -32,7 +36,13 @@ int main(int args[])
 	Node* f= new Node("F", 200, 300);
 	Node* g= new Node("G", 330, 300);
 
-
+	nodeList.push_back(a);
+	nodeList.push_back(b);
+	nodeList.push_back(c);
+	nodeList.push_back(d);
+	nodeList.push_back(e);
+	nodeList.push_back(f);
+	nodeList.push_back(g);
 
 
 
@@ -87,8 +97,14 @@ int main(int args[])
 	e->setBeestje(haas);
 
 
+
+
 	application->AddRenderable(vkoef);
 	application->AddRenderable(haas);
+
+
+	AlgoRitmeWeek1 week;
+	week.doAction(a, nodeList);
 
 	while (application->IsRunning())
 	{

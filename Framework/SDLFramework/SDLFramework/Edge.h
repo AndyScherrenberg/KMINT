@@ -24,6 +24,14 @@ public:
 	}
 
 
+	Node* getNode(Node* node)
+	{
+		if (node == nodeA)
+			return nodeB;
+		else
+			return nodeA;
+	}
+
 	
 private:
 	Node* nodeA;
