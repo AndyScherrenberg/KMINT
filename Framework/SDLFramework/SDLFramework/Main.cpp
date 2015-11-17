@@ -116,7 +116,7 @@ int main()
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-                    case SDLK_SPACE: week.doAction(vkoef, nodeList,haas->getNode());break;
+                    case SDLK_SPACE: week.doAction(vkoef, nodeList,haas);break;
 				default:
 					break;
 				}

@@ -32,9 +32,14 @@ public:
 		this->edges.push_back(edge);
 	}
     
-    bool operator < (const Node& str) const
+    bool operator < (const Node* str) const
     {
-        return (travelCost < str.travelCost);
+        return (pixelsToDestination < str->pixelsToDestination);
+    }
+    
+    bool operator > (const Node* str) const
+    {
+        return (pixelsToDestination > str->pixelsToDestination);
     }
 
 	std::vector<Edge*> edges;
@@ -46,8 +51,9 @@ public:
 	std::string ch;
     
     //Algortime
-    int travelCost = -1;
+    int travelCost = 0;
     Node* traveledFrom;
+    int pixelsToDestination;
 
 	void setBeestje(Beestje* beestje){ this->beestje = beestje; };
 	Beestje* getBeestje(){ return this->beestje; };
