@@ -33,6 +33,7 @@ int AlgoRitmeWeek1::calculateTravelCost(Node* current, Node* destination){
 
 void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje* haasje){
     
+    std::vector<Node*> edgeNodes;
     Node* destination = haasje->getNode();
 	Node* current = koe->getNode();
 	std::vector<Node*> closedList;
@@ -54,11 +55,15 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
         toNode->travelCost = current->travelCost + (*edge)->getWeight();
         toNode->pixelsToDestination = calculateTravelCost(current, toNode);
         toNode->traveledFrom = current;
-        openList.push_back(toNode);
+        
+        edgeNodes.push_back(toNode);
         // Zet de Node met de laagste travelCost vooraan
         //std::sort(openList.begin(), openList.end());
-        std::stable_sort(std::begin(openList),std::end(openList),[](const Node* p1, const Node* p2) { return p1->pixelsToDestination < p2->pixelsToDestination; });
+        std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
     }
+    //openList.insert(edgeNodes.begin(), edgeNodes.end(), openList.end());
+    openList.insert(openList.end(), edgeNodes.begin(), edgeNodes.end());
+    edgeNodes.clear();
     
     // Start Algortime
     while (!openList.empty()) {
@@ -118,14 +123,16 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
                 }
                 
                 if ( std::find(openList.begin(), openList.end(), toNode) == openList.end()){
-                   openList.push_back(toNode);
+                   edgeNodes.push_back(toNode);
                 }
                 
                 // Zet de Node met de laagste travelCost vooraan
                 //std::sort(openList.begin(), openList.end());
-                std::stable_sort(std::begin(openList),std::end(openList),[](const Node* p1, const Node* p2) { return p1->pixelsToDestination > p2->pixelsToDestination; });
+                std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
             }
         }
+        openList.insert(openList.end(), edgeNodes.begin(), edgeNodes.end());
+        edgeNodes.clear();
     }
 }
 

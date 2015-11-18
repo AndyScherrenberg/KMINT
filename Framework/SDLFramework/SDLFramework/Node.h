@@ -16,7 +16,6 @@ public:
 		this->x = loc_x;
 		this->y = loc_y;
 
-
 		this->h = 25;
 		this->w = 25;
 

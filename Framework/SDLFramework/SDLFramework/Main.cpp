@@ -48,15 +48,15 @@ int main()
 	Node* i= new Node("I", 550, 480);
 	Node* j= new Node("K", 600, 378); 
 	*/
-	Edge* ab = new Edge(a,b,5);
-	Edge* bc = new Edge(b,c,10);
-	Edge* bd = new Edge(b, d,8);
-	Edge* dc = new Edge(d, c,6);
-	Edge* dg = new Edge(d, g,4);
-	Edge* fd = new Edge(f, d,3);
-	Edge* af = new Edge(a, f,9);
-	Edge* fg = new Edge(f, g,2);
-    Edge* ge = new Edge(g, e,7);
+	Edge* ab = new Edge(a,b,5000000);
+	Edge* bc = new Edge(b,c,10000000);
+	Edge* bd = new Edge(b, d,8000000);
+	Edge* dc = new Edge(d, c,6000000);
+	Edge* dg = new Edge(d, g,4000000);
+	Edge* fd = new Edge(f, d,3000000);
+	Edge* af = new Edge(a, f,9000000);
+	Edge* fg = new Edge(f, g,2000000);
+    Edge* ge = new Edge(g, e,7000000);
 
 	//	Edge* de = new Edge(d,e,);
 		Edge* ce = new Edge(c, e,1);
