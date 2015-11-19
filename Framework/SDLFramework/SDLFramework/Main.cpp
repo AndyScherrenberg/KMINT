@@ -60,7 +60,8 @@ int main()
 
 	//	Edge* de = new Edge(d,e,);
 		Edge* ce = new Edge(c, e,1);
-	//Draw Nodes
+
+    //Draw Nodes
     application->AddRenderable(a);
 	application->AddRenderable(b);
 	application->AddRenderable(c);
@@ -68,6 +69,7 @@ int main()
 	application->AddRenderable(e);
 	application->AddRenderable(f);
 	application->AddRenderable(g);
+    
     //Draw Edges
 	application->AddRenderable(ab);
 	application->AddRenderable(bc);
