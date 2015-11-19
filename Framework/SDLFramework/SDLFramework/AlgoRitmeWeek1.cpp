@@ -5,7 +5,7 @@
 #ifdef __APPLE__
 #include <sys/uio.h>
 #else
-#include <sys/io.h>
+#include <io.h>
 #endif
 #include <iostream>
 #include <queue>
@@ -59,7 +59,9 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
         edgeNodes.push_back(toNode);
         // Zet de Node met de laagste travelCost vooraan
         //std::sort(openList.begin(), openList.end());
-        std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
+#ifdef __APPLE__
+		  std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
+#endif
     }
     //openList.insert(edgeNodes.begin(), edgeNodes.end(), openList.end());
     openList.insert(openList.end(), edgeNodes.begin(), edgeNodes.end());
@@ -128,7 +130,9 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
                 
                 // Zet de Node met de laagste travelCost vooraan
                 //std::sort(openList.begin(), openList.end());
-                std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
+#ifdef __APPLE__
+               std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
+#endif
             }
         }
         openList.insert(openList.end(), edgeNodes.begin(), edgeNodes.end());

@@ -115,7 +115,7 @@ SDL_Texture * FWApplication::LoadTexture(const std::string & fileName)
     #ifdef __APPLE__
     const std::string path = GetRelativePath("Resources/" + fileName);
     #else
-        const std::string path = GetRelativePath("Resources" + PATH_SEP + fileName);
+        const std::string path = GetRelativePath("Resources/" +  fileName);
     #endif
 	SDL_Surface * surface = IMG_Load(path.c_str());
 	if (surface)
