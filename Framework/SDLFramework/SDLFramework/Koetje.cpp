@@ -19,7 +19,6 @@ void Koetje::Draw(){
 
 }
 void Koetje::Update(float deltaTime) {
-
-
+    this->currentState->Update();
 }
 

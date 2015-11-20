@@ -1,11 +1,7 @@
 #include "Beestje.h"
 
-
 Beestje::Beestje()
 {
-	
-
-	
 }
 
 

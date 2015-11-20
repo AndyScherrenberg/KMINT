@@ -53,6 +53,10 @@ public:
     int travelCost = 0;
     Node* traveledFrom;
     int pixelsToDestination;
+    
+    // States
+    bool containsDrugs = false;
+    bool containsWeapon = false;
 
 	void setBeestje(Beestje* beestje){ this->beestje = beestje; };
 	Beestje* getBeestje(){ return this->beestje; };

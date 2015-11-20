@@ -39,6 +39,7 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
 	std::vector<Node*> closedList;
     std::vector<Node*> openList;
     
+
     //reset all nodes
     for (std::vector<Node*>::iterator node = collection.begin(); node != collection.end(); node++)
     {
@@ -60,7 +61,7 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
         // Zet de Node met de laagste travelCost vooraan
         //std::sort(openList.begin(), openList.end());
 #ifdef __APPLE__
-        std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
+        std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2-> pixelsToDestination + p2->pixelsToDestination); });
 #endif
     }
     //openList.insert(edgeNodes.begin(), edgeNodes.end(), openList.end());
@@ -86,14 +87,14 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
             if (finder->traveledFrom == koe->getNode()) {
                 // 1 stap voor de haas
                 setNewCawPlace(destination, koe);
-                Node* newHaasjeNode;
-                do{
-                    int random_index = rand() % collection.size();
-                    newHaasjeNode = collection.at(random_index);
-                }
-                while(newHaasjeNode == haasje->getNode());
-                
-                haasje->setNode(newHaasjeNode);
+//                Node* newHaasjeNode;
+//                do{
+//                    int random_index = rand() % collection.size();
+//                    newHaasjeNode = collection.at(random_index);
+//                }
+//                while(newHaasjeNode == haasje->getNode());
+//                
+//                haasje->setNode(newHaasjeNode);
                 break;
             }
             //found

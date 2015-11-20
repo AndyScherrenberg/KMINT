@@ -7,7 +7,9 @@
 #include "Node.h"
 #include "Koetje.h"
 #include "Haasje.h"
+#include "WanderingCow.hpp"
 #include "AlgoRitmeWeek1.h"
+
 int main()
 {
 	//auto window = Window::CreateSDLWindow();
@@ -87,23 +89,27 @@ int main()
 
 	//while (true){}
 
-	Koetje* vkoef = new Koetje();
+	Koetje* koe = new Koetje();
 	Haasje* haas = new Haasje();
 
 
-	vkoef->setNode(a);
-	a->setBeestje(vkoef);
+	koe->setNode(a);
+    koe->setState(new WanderingCow(koe));
+	a->setBeestje(koe);
     
-	haas->setNode(e);
+ 	haas->setNode(e);
 	e->setBeestje(haas);
 
-	application->AddRenderable(vkoef);
+	application->AddRenderable(koe);
 	application->AddRenderable(haas);
 
 
-	AlgoRitmeWeek1 week;
+	AlgoRitmeWeek1 aStar;
 	//week.doAction(vkoef, nodeList,haas->getNode());
-
+    
+    char cowStatus[100];
+    char rabitStatus[100];
+    
 	while (application->IsRunning())
 	{
 		application->StartTick();
@@ -118,19 +124,31 @@ int main()
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-                    case SDLK_SPACE: week.doAction(vkoef, nodeList,haas);break;
+                    case SDLK_SPACE:
+                        //aStar.doAction(koe, nodeList,haas);
+                        koe->Update(1.00);
+                        break;
 				default:
 					break;
 				}
 			}
 		}
+        
+        
+        strcpy(cowStatus,"Koe status = "); // copy string one into the result.
+        
+        strcpy(rabitStatus,"Haas status = "); // copy string one into the result.
+        //strcat(rabitStatus,getTextForEnum(haas->getState()));
+
 		
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500 );
 		application->DrawText("Groen is koe, Oranje is haas", 120, 520);
+        application->DrawText(cowStatus , 120, 540);
+        application->DrawText(rabitStatus , 120, 560);
 		// For the background
 	
-		application->UpdateGameObjects();
+		//application->UpdateGameObjects();
 		application->RenderGameObjects();
 		application->EndTick();
  
