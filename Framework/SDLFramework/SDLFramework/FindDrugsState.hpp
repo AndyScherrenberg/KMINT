@@ -17,7 +17,7 @@ class FindDrugsState: public CowState
 public:
     FindDrugsState(Beestje* beestje): CowState(beestje){};
     ~FindDrugsState();
-    const char* stateToText(){return "Drug Finding";};
+    const char* stateToText() override {return "Drug Finding";};
     void Update() override;
     void checkState() override;
 };

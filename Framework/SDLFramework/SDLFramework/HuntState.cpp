@@ -9,7 +9,10 @@
 #include "HuntState.hpp"
 
 void HuntState::checkState(){
-    
+    if(owner->getNode() == haasje->getNode())
+    {
+        //TODO: GOTO wandering state
+    }
 }
 
 void HuntState::Update(){

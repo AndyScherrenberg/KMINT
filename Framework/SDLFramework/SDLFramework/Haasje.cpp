@@ -21,7 +21,7 @@ void Haasje::Draw(){
 	mApplication->DrawRect(this->getNode()->x - 12, this->getNode()->y - 12, 10, 10, true);
 }
 void Haasje::Update(float deltaTime) {
-
-
+    this->currentState->checkState();
+    this->currentState->Update();
 }
 

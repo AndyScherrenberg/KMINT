@@ -18,7 +18,7 @@ class WanderingCow: public CowState
 public:
     WanderingCow(Beestje* beestje): CowState(beestje){};
     ~WanderingCow();
-    const char* stateToText(){return "Wandering";};
+    const char* stateToText() override {return "Wandering";};
     void Update() override;
     void checkState() override;
 };

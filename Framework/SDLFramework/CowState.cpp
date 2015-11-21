@@ -22,3 +22,7 @@ void CowState::Update(){
 void CowState::checkState(){
     
 }
+
+const char* CowState::stateToText(){
+    return "not implemented";
+}

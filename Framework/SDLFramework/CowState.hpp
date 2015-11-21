@@ -25,7 +25,7 @@ public:
     ~CowState();
     virtual void Update();
     virtual void checkState();
-    const char* stateToText();
+    virtual const char* stateToText();
 };
 
 

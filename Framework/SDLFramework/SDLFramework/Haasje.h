@@ -1,5 +1,6 @@
 #pragma once
 #include "Beestje.h"
+#include "CowState.hpp"
 
 class Haasje : public Beestje
 {

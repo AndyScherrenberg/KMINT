@@ -29,17 +29,14 @@ int AlgoRitmeWeek1::calculateTravelCost(Node* current, Node* destination){
     return pixelDifference;
 }
 
-
-
-void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje* haasje){
-    
+void AlgoRitmeWeek1::aStar(Beestje* beestje, std::vector<Node*> collection, Node* destination)
+{
     std::vector<Node*> edgeNodes;
-    Node* destination = haasje->getNode();
-	Node* current = koe->getNode();
-	std::vector<Node*> closedList;
+    Node* current = beestje->getNode();
+    std::vector<Node*> closedList;
     std::vector<Node*> openList;
     
-
+    
     //reset all nodes
     for (std::vector<Node*>::iterator node = collection.begin(); node != collection.end(); node++)
     {
@@ -79,31 +76,31 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
         // Haal current uit de openList
         openList.erase(openList.begin());
         std::sort(openList.begin(), openList.end());
-
+        
         
         if(current == destination)
         {
             Node* finder = destination;
-            if (finder->traveledFrom == koe->getNode()) {
+            if (finder->traveledFrom == beestje->getNode()) {
                 // 1 stap voor de haas
-                setNewCawPlace(destination, koe);
-//                Node* newHaasjeNode;
-//                do{
-//                    int random_index = rand() % collection.size();
-//                    newHaasjeNode = collection.at(random_index);
-//                }
-//                while(newHaasjeNode == haasje->getNode());
-//                
-//                haasje->setNode(newHaasjeNode);
+                setNewCawPlace(destination, beestje);
+                //                Node* newHaasjeNode;
+                //                do{
+                //                    int random_index = rand() % collection.size();
+                //                    newHaasjeNode = collection.at(random_index);
+                //                }
+                //                while(newHaasjeNode == haasje->getNode());
+                //
+                //                haasje->setNode(newHaasjeNode);
                 break;
             }
             //found
-            while(finder->traveledFrom != koe->getNode()){
+            while(finder->traveledFrom != beestje->getNode()){
                 finder = finder->traveledFrom;
             }
-            setNewCawPlace(finder, koe);
+            setNewCawPlace(finder, beestje);
             
-
+            
             break;
         }
         
@@ -126,13 +123,13 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
                 }
                 
                 if ( std::find(openList.begin(), openList.end(), toNode) == openList.end()){
-                   edgeNodes.push_back(toNode);
+                    edgeNodes.push_back(toNode);
                 }
                 
                 // Zet de Node met de laagste travelCost vooraan
                 //std::sort(openList.begin(), openList.end());
 #ifdef __APPLE__
-               std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
+                std::stable_sort(std::begin(edgeNodes),std::end(edgeNodes),[](const Node* p1, const Node* p2) { return (p1->pixelsToDestination + p1->travelCost) > (p2->pixelsToDestination + p2->pixelsToDestination); });
 #endif
             }
         }
@@ -141,7 +138,15 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
     }
 }
 
-void AlgoRitmeWeek1::setNewCawPlace(Node* newPlace, Koetje* koe){
+void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje* haasje){
+    aStar(koe, collection, haasje->getNode());
+}
+
+void AlgoRitmeWeek1::goToPlace(Beestje* beestje, std::vector<Node*> collection, Node* destination){
+    aStar(beestje, collection, destination);
+}
+
+void AlgoRitmeWeek1::setNewCawPlace(Node* newPlace, Beestje* koe){
     koe->setNode(newPlace);
 }
 

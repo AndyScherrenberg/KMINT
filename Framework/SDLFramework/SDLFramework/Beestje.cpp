@@ -17,6 +17,4 @@ void Beestje::Draw(){
 
 }
 void Beestje::Update(float deltaTime) {
-	
-
 }

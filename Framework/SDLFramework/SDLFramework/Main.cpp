@@ -8,10 +8,12 @@
 #include "Koetje.h"
 #include "Haasje.h"
 #include "WanderingCow.hpp"
+#include "FindWeaponState.hpp"
 #include "AlgoRitmeWeek1.h"
 
 int main()
 {
+    AlgoRitmeWeek1* aStar = new AlgoRitmeWeek1;
 	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
 	if (!application->GetWindow())
@@ -94,17 +96,19 @@ int main()
 
 
 	koe->setNode(a);
-    koe->setState(new WanderingCow(koe));
+    koe->setState(new FindWeaponState(koe,nodeList,aStar));
+    
 	a->setBeestje(koe);
     
  	haas->setNode(e);
+    haas->setState(new WanderingCow(haas));
 	e->setBeestje(haas);
 
 	application->AddRenderable(koe);
 	application->AddRenderable(haas);
 
 
-	AlgoRitmeWeek1 aStar;
+	
 	//week.doAction(vkoef, nodeList,haas->getNode());
     
     char cowStatus[100];
@@ -127,6 +131,7 @@ int main()
                     case SDLK_SPACE:
                         //aStar.doAction(koe, nodeList,haas);
                         koe->Update(1.00);
+                        haas->Update(1.00);
                         break;
 				default:
 					break;
@@ -136,9 +141,9 @@ int main()
         
         
         strcpy(cowStatus,"Koe status = "); // copy string one into the result.
-        
+        strcat(cowStatus,koe->getState()->stateToText());
         strcpy(rabitStatus,"Haas status = "); // copy string one into the result.
-        //strcat(rabitStatus,getTextForEnum(haas->getState()));
+        strcat(rabitStatus,haas->getState()->stateToText());
 
 		
 		application->SetColor(Color(0, 0, 0, 255));

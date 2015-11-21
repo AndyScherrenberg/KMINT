@@ -23,7 +23,7 @@ class HuntState: public CowState
 public:
     HuntState(Beestje* owner,Koetje* koe, std::vector<Node*> collection,Haasje* haasje): CowState(owner){algoritme = new AlgoRitmeWeek1();};
     ~HuntState();
-    const char* stateToText(){return "Hunting";};
+    const char* stateToText() override {return "Hunting";};
     void Update() override;
     void checkState() override;
 };
