@@ -13,7 +13,7 @@
 
 int main()
 {
-    AlgoRitmeWeek1* aStar = new AlgoRitmeWeek1;
+	AlgoRitmeWeek1* aStar = new AlgoRitmeWeek1;
 	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
 	if (!application->GetWindow())
@@ -21,24 +21,24 @@ int main()
 		LOG("Couldn't create window...");
 		return EXIT_FAILURE;
 	}
-	
+
 	//10 nodes
 	//Per klik een stap van het korste pad;//checkje voor buurnode;
 	//druk op 1 haasje verplaaytst
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
-	
+
 
 
 	std::vector<Node*> nodeList;
 
 	Node* a = new Node("A", 100, 200);
 	Node* b = new Node("B", 200, 100);
-	Node* c= new Node("C", 370, 100);
-	Node* d= new Node("D", 300, 180);
-	Node* e= new Node("E", 450, 200);
-	Node* f= new Node("F", 200, 300);
-	Node* g= new Node("G", 330, 300);
+	Node* c = new Node("C", 370, 100);
+	Node* d = new Node("D", 300, 180);
+	Node* e = new Node("E", 450, 200);
+	Node* f = new Node("F", 200, 300);
+	Node* g = new Node("G", 330, 300);
 
 	nodeList.push_back(a);
 	nodeList.push_back(b);
@@ -50,31 +50,31 @@ int main()
 
 	/*Node* h= new Node("H", 425, 360);
 	Node* i= new Node("I", 550, 480);
-	Node* j= new Node("K", 600, 378); 
+	Node* j= new Node("K", 600, 378);
 	*/
-	Edge* ab = new Edge(a,b,5000000);
-	Edge* bc = new Edge(b,c,10000000);
-	Edge* bd = new Edge(b, d,8000000);
-	Edge* dc = new Edge(d, c,6000000);
-	Edge* dg = new Edge(d, g,4000000);
-	Edge* fd = new Edge(f, d,3000000);
-	Edge* af = new Edge(a, f,9000000);
-	Edge* fg = new Edge(f, g,2000000);
-    Edge* ge = new Edge(g, e,7000000);
+	Edge* ab = new Edge(a, b, 5000000);
+	Edge* bc = new Edge(b, c, 10000000);
+	Edge* bd = new Edge(b, d, 8000000);
+	Edge* dc = new Edge(d, c, 6000000);
+	Edge* dg = new Edge(d, g, 4000000);
+	Edge* fd = new Edge(f, d, 3000000);
+	Edge* af = new Edge(a, f, 9000000);
+	Edge* fg = new Edge(f, g, 2000000);
+	Edge* ge = new Edge(g, e, 7000000);
 
 	//	Edge* de = new Edge(d,e,);
-		Edge* ce = new Edge(c, e,1);
+	Edge* ce = new Edge(c, e, 1);
 
-    //Draw Nodes
-    application->AddRenderable(a);
+	//Draw Nodes
+	application->AddRenderable(a);
 	application->AddRenderable(b);
 	application->AddRenderable(c);
 	application->AddRenderable(d);
 	application->AddRenderable(e);
 	application->AddRenderable(f);
 	application->AddRenderable(g);
-    
-    //Draw Edges
+
+	//Draw Edges
 	application->AddRenderable(ab);
 	application->AddRenderable(bc);
 	application->AddRenderable(bd);
@@ -96,24 +96,24 @@ int main()
 
 
 	koe->setNode(a);
-    koe->setState(new FindWeaponState(koe,nodeList,aStar));
-    
+	koe->setState(new FindWeaponState(koe, nodeList, aStar));
+
 	a->setBeestje(koe);
-    
- 	haas->setNode(e);
-    haas->setState(new WanderingCow(haas));
+
+	haas->setNode(e);
+	haas->setState(new WanderingCow(haas));
 	e->setBeestje(haas);
 
 	application->AddRenderable(koe);
 	application->AddRenderable(haas);
 
 
-	
+
 	//week.doAction(vkoef, nodeList,haas->getNode());
-    
-    char cowStatus[100];
-    char rabitStatus[100];
-    
+
+	char cowStatus[100];
+	char rabitStatus[100];
+
 	while (application->IsRunning())
 	{
 		application->StartTick();
@@ -128,38 +128,49 @@ int main()
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-                    case SDLK_SPACE:
-                        //aStar.doAction(koe, nodeList,haas);
-                        koe->Update(1.00);
-                        haas->Update(1.00);
-                        break;
+				case SDLK_SPACE:
+					//aStar.doAction(koe, nodeList,haas);
+					koe->Update(1.00);
+					haas->Update(1.00);
+					break;
 				default:
 					break;
 				}
 			}
 		}
-        
-        
-        strcpy(cowStatus,"Koe status = "); // copy string one into the result.
-        strcat(cowStatus,koe->getState()->stateToText());
-        strcpy(rabitStatus,"Haas status = "); // copy string one into the result.
-        strcat(rabitStatus,haas->getState()->stateToText());
 
-		
+
+
+
+
+
+#ifdef __APPLE__
+		strcpy(cowStatus, "Koe status = "); // copy string one into the result.
+		strcat(cowStatus, koe->getState()->stateToText());
+		strcpy(rabitStatus, "Haas status = "); // copy string one into the result.
+		strcat(rabitStatus, haas->getState()->stateToText());
+#else
+		strcpy_s(cowStatus,"Koe status = "); // copy string one into the result.
+		strcat_s(cowStatus,koe->getState()->stateToText());
+		strcpy_s(rabitStatus, "Haas status = "); // copy string one into the result.
+		strcat_s(rabitStatus, haas->getState()->stateToText());
+#endif
+
+
 		application->SetColor(Color(0, 0, 0, 255));
-		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500 );
+		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500);
 		application->DrawText("Groen is koe, Oranje is haas", 120, 520);
-        application->DrawText(cowStatus , 120, 540);
-        application->DrawText(rabitStatus , 120, 560);
+		application->DrawText(cowStatus, 120, 540);
+		application->DrawText(rabitStatus, 120, 560);
 		// For the background
-	
+
 		//application->UpdateGameObjects();
 		application->RenderGameObjects();
 		application->EndTick();
- 
+
 		application->SetColor(Color(255, 255, 255, 255));
 
 	}
-		
+
 	return EXIT_SUCCESS;
 }

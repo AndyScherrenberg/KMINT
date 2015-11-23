@@ -13,7 +13,7 @@ FindWeaponState::FindWeaponState(Beestje* beestje,std::vector<Node*> collection,
     
     std::vector<Node*>::iterator wplace;
 
-    srand(time(0)); // This will ensure a really randomized number by help of time.
+  // srand(time(0)); // This will ensure a really randomized number by help of time.
     int xRan=rand()%collection.size()+1;
     wplace = collection.begin() + xRan -1;
     
