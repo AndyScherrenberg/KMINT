@@ -6,6 +6,8 @@
 //  Copyright © 2015 Bryan Sijs. All rights reserved.
 //
 
+//TODO Stateverwijs naar state;
+
 #ifndef StateFactory_hpp
 #define StateFactory_hpp
 

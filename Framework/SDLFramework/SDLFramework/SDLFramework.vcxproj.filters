@@ -53,6 +53,9 @@
     <ClCompile Include="CowState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StateFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -98,6 +101,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CowState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

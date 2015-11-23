@@ -7,11 +7,15 @@
 //
 
 #include "HuntState.hpp"
-
+#include "WanderingCow.hpp"
 void HuntState::checkState(){
+
+
     if(owner->getNode() == haasje->getNode())
     {
         //TODO: GOTO wandering state
+		haasje->setState(new WanderingCow(haasje));
+		owner->setState(new WanderingCow(owner, collection, algoritme));
     }
 }
 

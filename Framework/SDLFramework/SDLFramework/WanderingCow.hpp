@@ -11,12 +11,15 @@
 
 #include <stdio.h>
 #include "CowState.hpp"
-
+#include "AlgoRitmeWeek1.h"
 class WanderingCow: public CowState
 {
     int timesInWandering = 0;
+	std::vector<Node*> collection;
+	AlgoRitmeWeek1* algoritme;
 public:
     WanderingCow(Beestje* beestje): CowState(beestje){};
+	WanderingCow(Beestje* beestje, std::vector<Node*> collection, AlgoRitmeWeek1* algoritme);
     ~WanderingCow();
     const char* stateToText() override {return "Wandering";};
     void Update() override;

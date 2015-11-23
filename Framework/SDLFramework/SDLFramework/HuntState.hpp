@@ -14,18 +14,21 @@
 #include "Koetje.h"
 #include "Haasje.h"
 
-class HuntState: public CowState
+class HuntState : public CowState
 {
-    AlgoRitmeWeek1* algoritme;
-    Koetje* koe;
-    std::vector<Node*> collection;
-    Haasje* haasje;
+	AlgoRitmeWeek1* algoritme;
+	Koetje* koe;
+	std::vector<Node*> collection;
+	Haasje* haasje;
 public:
-    HuntState(Beestje* owner,Koetje* koe, std::vector<Node*> collection,Haasje* haasje): CowState(owner){algoritme = new AlgoRitmeWeek1();};
-    ~HuntState();
-    const char* stateToText() override {return "Hunting";};
-    void Update() override;
-    void checkState() override;
+	HuntState(Beestje* owner, Koetje* koe, std::vector<Node*> collection, Haasje* haasje) : CowState(owner){
+		this->collection;
+		this->haasje = haasje;
+	};
+	~HuntState();
+	const char* stateToText() override { return "Hunting"; };
+	void Update() override;
+	void checkState() override;
 };
 
-#endif /* huntState_hpp */
+#endif

@@ -10,7 +10,7 @@
 #include "WanderingCow.hpp"
 #include "FindWeaponState.hpp"
 #include "AlgoRitmeWeek1.h"
-
+#include "FindDrugsState.hpp"
 int main()
 {
 	AlgoRitmeWeek1* aStar = new AlgoRitmeWeek1;
@@ -96,7 +96,7 @@ int main()
 
 
 	koe->setNode(a);
-	koe->setState(new FindWeaponState(koe, nodeList, aStar));
+	koe->setState(new WanderingCow(koe, nodeList, aStar));
 
 	a->setBeestje(koe);
 

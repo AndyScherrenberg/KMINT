@@ -8,7 +8,7 @@
 
 #include "FindWeaponState.hpp"
 #include <iostream>
-
+#include "HuntState.hpp"
 FindWeaponState::FindWeaponState(Beestje* beestje,std::vector<Node*> collection,AlgoRitmeWeek1* algoritme): CowState(beestje){
     
     std::vector<Node*>::iterator wplace;
@@ -23,6 +23,7 @@ FindWeaponState::FindWeaponState(Beestje* beestje,std::vector<Node*> collection,
     }
 
     this->weaponPlace = (*wplace);
+	this->weaponPlace->containsWeapon = true;
     this->algoritme = algoritme;
     this->collection = collection;
 }
@@ -31,9 +32,12 @@ void FindWeaponState::checkState(){
     if(owner->getNode() == this->weaponPlace)
     {
         std::cout << "weapon found" << std::endl;
+		owner->GiveWeapon();        //TODO: Haas is dood en spel begint opnieuw.
+		this->weaponPlace->containsWeapon = false;
+	
+		owner->setState(new HuntState());
 
-        //TODO: Haas is dood en spel begint opnieuw.
-    }
+	}
 }
 
 void FindWeaponState::Update(){

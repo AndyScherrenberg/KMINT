@@ -96,6 +96,7 @@
     <ClCompile Include="Koetje.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="StateFactory.cpp" />
     <ClCompile Include="WanderingCow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +116,7 @@
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Koetje.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="StateFactory.hpp" />
     <ClInclude Include="WanderingCow.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

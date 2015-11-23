@@ -11,13 +11,15 @@ class CowState;
 
 class Beestje : public IGameObject
 {
+private:
+	bool hasWeapon = false;
 public:
 	Beestje();
 	~Beestje();
 
 	virtual void Draw() override;
 	virtual void Update(float deltaTime) override;
-    
+	virtual void GiveWeapon(){ hasWeapon = true; };
     void setState(CowState* state){this->currentState  =state;};
     CowState* getState(){return currentState;};
     

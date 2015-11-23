@@ -9,7 +9,17 @@
 #include "WanderingCow.hpp"
 #include "Node.h"
 #include "StateFactory.hpp"
+#include "FindDrugsState.hpp"
 #include <ctime>
+
+
+WanderingCow::WanderingCow(Beestje* beestje, std::vector<Node*> collection, AlgoRitmeWeek1* algoritme) : CowState(beestje){
+
+	this->algoritme = algoritme;
+	this->collection = collection;
+
+
+}
 
 void WanderingCow::Update(){
     timesInWandering++;
@@ -25,7 +35,11 @@ void WanderingCow::Update(){
 }
 
 void WanderingCow::checkState(){
-    if(timesInWandering > 3){
-        //TODO goto FINDDRUG state
-    }
+	if (dynamic_cast<Koetje*>(owner))
+	{
+
+		if (timesInWandering > 3){
+ 			owner->setState(new FindDrugsState(owner, this->collection, this->algoritme));
+		}
+	}
 }
