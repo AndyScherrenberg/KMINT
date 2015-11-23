@@ -32,7 +32,7 @@ void FindWeaponState::checkState(){
     {
         std::cout << "weapon found" << std::endl;
 
-        //TODO: Haas is dood en spel begint opnieuw. 
+        //TODO: Haas is dood en spel begint opnieuw.
     }
 }
 
