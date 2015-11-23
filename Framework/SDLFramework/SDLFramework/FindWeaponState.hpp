@@ -13,6 +13,9 @@
 #include "CowState.hpp"
 #include "AlgoRitmeWeek1.h"
 
+
+
+
 class FindWeaponState: public CowState
 {
     Node* weaponPlace;

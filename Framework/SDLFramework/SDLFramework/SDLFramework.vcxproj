@@ -84,26 +84,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlgoRitmeWeek1.cpp" />
     <ClCompile Include="Beestje.cpp" />
+    <ClCompile Include="CowState.cpp" />
     <ClCompile Include="Edge.cpp" />
+    <ClCompile Include="FindDrugsState.cpp" />
+    <ClCompile Include="FindWeaponState.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Haasje.cpp" />
+    <ClCompile Include="HuntState.cpp" />
     <ClCompile Include="Koetje.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="WanderingCow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlgoRitmeWeek1.h" />
     <ClInclude Include="Beestje.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="CowState.hpp" />
     <ClInclude Include="Edge.h" />
+    <ClInclude Include="FindDrugsState.hpp" />
+    <ClInclude Include="FindWeaponState.hpp" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Haasje.h" />
+    <ClInclude Include="HuntState.hpp" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Koetje.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="WanderingCow.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

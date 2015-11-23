@@ -10,7 +10,7 @@
 
 void FindDrugsState::checkState(){
     if (owner->getNode()->containsDrugs) {
-        srand(time(0));
+     //   srand(time(0));
         int xRan= rand()% 5;
         if(xRan == 1)
         {
