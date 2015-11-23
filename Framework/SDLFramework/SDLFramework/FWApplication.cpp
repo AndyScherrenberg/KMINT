@@ -113,7 +113,7 @@ std::string FWApplication::GetRelativePath(const std::string & path) const
 SDL_Texture * FWApplication::LoadTexture(const std::string & fileName)
 {
     #ifdef __APPLE__
-    const std::string path = GetRelativePath("Resources/" + fileName);
+    const std::string path = fileName;
     #else
         const std::string path = GetRelativePath("Resources/" +  fileName);
     #endif

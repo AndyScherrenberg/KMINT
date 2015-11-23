@@ -139,11 +139,6 @@ int main()
 			}
 		}
 
-
-
-
-
-
 #ifdef __APPLE__
 		strcpy(cowStatus, "Koe status = "); // copy string one into the result.
 		strcat(cowStatus, koe->getState()->stateToText());
