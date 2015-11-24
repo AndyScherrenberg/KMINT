@@ -9,7 +9,7 @@
 #include "StateFactory.hpp"
 #include "WanderingState.hpp"
 #include "FindDrugsState.hpp"
-#include "FindWeaponState.hpp"
+#include "FindBootState.hpp"
 #include "HuntState.hpp"
 #include "SleepState.h"
 
@@ -26,7 +26,7 @@ BaseState* StateFactory::createNextState(int id, Beestje* beestje, NodeMap* node
 		return new FindDrugsState(beestje, nodeMap);
 		break;
 	case 3:
-		return new FindWeaponState(beestje, nodeMap);
+		return new FindBootState(beestje, nodeMap);
 		break;
 	case 4:
 		return new HuntState(beestje, nodeMap);

@@ -53,7 +53,7 @@ public:
     int travelCost = 0;
     Node* traveledFrom;
     int pixelsToDestination;
-    
+	void setTexture();
     // States
     bool containsDrugs = false;
     bool containsWeapon = false;
@@ -61,6 +61,8 @@ public:
 	void setBeestje(Beestje* beestje){ this->beestje = beestje; };
 	Beestje* getBeestje(){ return this->beestje; };
     
+
+
 private:
         Beestje* beestje;
 };

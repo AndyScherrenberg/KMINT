@@ -6,8 +6,8 @@
 //  Copyright © 2015 Bryan Sijs. All rights reserved.
 //
 
-#ifndef FindWeaponState_hpp
-#define FindWeaponState_hpp
+#ifndef FindBootState_hpp
+#define FindBootState_hpp
 
 #include <stdio.h>
 #include "BaseState.hpp"
@@ -16,15 +16,15 @@
 
 
 
-class FindWeaponState : public BaseState
+class FindBootState : public BaseState
 {
     Node* weaponPlace;
     AlgoRitmeWeek1* algoritme;
     std::vector<Node*> collection;
 public:
-	FindWeaponState(Beestje* beestje, NodeMap* nodemap) ;
-    ~FindWeaponState();
-    const char* stateToText() override {return "FindWeapon";};
+	FindBootState(Beestje* beestje, NodeMap* nodemap);
+	~FindBootState();
+    const char* stateToText() override {return "Find Boots";};
     void Update() override;
     void checkState() override;
 };

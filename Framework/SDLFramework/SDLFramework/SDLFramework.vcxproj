@@ -89,7 +89,7 @@
     <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FindDrugsState.cpp" />
-    <ClCompile Include="FindWeaponState.cpp" />
+    <ClCompile Include="FindBootState.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Haasje.cpp" />
     <ClCompile Include="HuntState.cpp" />
@@ -111,7 +111,7 @@
     <ClInclude Include="BaseState.hpp" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FindDrugsState.hpp" />
-    <ClInclude Include="FindWeaponState.hpp" />
+    <ClInclude Include="FindBootState.hpp" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Haasje.h" />
     <ClInclude Include="HuntState.hpp" />

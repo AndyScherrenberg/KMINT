@@ -8,12 +8,11 @@ Haasje::Haasje()
     #else
         this->SetTexture(mApplication->LoadTexture("haas.png"));
     #endif
-
+		this->setWander(4);
 		this->StateMap.insert(std::pair<int, int>(1, 5));
 		this->StateMap.insert(std::pair<int, int>(5, 1));
-
-		
 }
+
 
 
 Haasje::~Haasje()

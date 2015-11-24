@@ -1,7 +1,7 @@
 #include "SleepState.h"
 
 SleepState::SleepState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
-
+	sleepTurn = 2;
 }
 
 
@@ -15,7 +15,7 @@ void SleepState::checkState(){
 }
 
 void SleepState::Update(){
-	if (sleepAmount > sleepTurn){
+	if (sleepAmount >= sleepTurn){
 		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
 	}
 }

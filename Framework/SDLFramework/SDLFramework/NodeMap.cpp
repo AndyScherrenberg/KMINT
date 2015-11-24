@@ -1,5 +1,6 @@
 #include "NodeMap.h"
 #include "WanderingState.hpp"
+#include <random>
 void NodeMap::Update()
 {
 	this->getKoe()->Update(1.00);
@@ -10,7 +11,7 @@ NodeMap::NodeMap(FWApplication* application)
 {
 	this->application = application;
 
-
+	//x,y//
 	Node* a = new Node("A", 100, 200);
 	Node* b = new Node("B", 200, 100);
 	Node* c = new Node("C", 370, 100);
@@ -19,14 +20,24 @@ NodeMap::NodeMap(FWApplication* application)
 	Node* f = new Node("F", 200, 300);
 	Node* g = new Node("G", 330, 300);
 
+	Node* h = new Node("H", 600, 200);
+	Node* i = new Node("I", 650, 250);
+	Node* j = new Node("J", 550, 300);
+	Node* k = new Node("K", 450, 350);
+	Node* l = new Node("l", 600, 450);
+
 	this->nodeList.push_back(a);
 	this->nodeList.push_back(b);
 	this->nodeList.push_back(c);
 	this->nodeList.push_back(d);
 	this->nodeList.push_back(e);
 	this->nodeList.push_back(f);
-	nodeList.push_back(g);
-
+	this->nodeList.push_back(g);
+	this->nodeList.push_back(h);
+	this->nodeList.push_back(i);
+	this->nodeList.push_back(j);
+	this->nodeList.push_back(k);
+	this->nodeList.push_back(l);
 	Edge* ab = new Edge(a, b, 5000000);
 	Edge* bc = new Edge(b, c, 10000000);
 	Edge* bd = new Edge(b, d, 8000000);
@@ -38,7 +49,13 @@ NodeMap::NodeMap(FWApplication* application)
 	Edge* ge = new Edge(g, e, 7000000);
 
 	Edge* ce = new Edge(c, e, 1);
+	Edge* eh = new Edge(e, h, 700000);
+	Edge* hi = new Edge(h, i, 700000);
+	Edge* hj = new Edge(h, j, 700000);
+	Edge* jl = new Edge(j, l, 10000002);
 
+	Edge* kl = new Edge(k, l, 6000000);
+	Edge* ik = new Edge(i, k, 5500000);
 	//Draw Nodes
 	this->application->AddRenderable(a);
 	this->application->AddRenderable(b);
@@ -48,6 +65,11 @@ NodeMap::NodeMap(FWApplication* application)
 	this->application->AddRenderable(f);
 	this->application->AddRenderable(g);
 
+	this->application->AddRenderable(h);
+	this->application->AddRenderable(i);
+	this->application->AddRenderable(j);
+	this->application->AddRenderable(k);
+	this->application->AddRenderable(l);
 	//Draw Edges
 	this->application->AddRenderable(ab);
 	this->application->AddRenderable(bc);
@@ -61,7 +83,16 @@ NodeMap::NodeMap(FWApplication* application)
 	this->application->AddRenderable(fg);
 	this->application->AddRenderable(ge);
 	this->application->AddRenderable(ce);
+	this->application->AddRenderable(eh);
 
+
+	this->application->AddRenderable(jl);
+	this->application->AddRenderable(hj);
+
+	this->application->AddRenderable(ik);
+
+
+	this->application->AddRenderable(kl);
 	this->koe = new Koetje();
 	this->haas = new Haasje();
 
@@ -69,9 +100,16 @@ NodeMap::NodeMap(FWApplication* application)
 
 	a->setBeestje(koe);
 
-	haas->setNode(e);
+	haas->setNode(l);
 
-	e->setBeestje(haas);
+	l->setBeestje(haas);
+
+	f->containsWeapon = true;
+	f->setTexture();
+
+
+	c->containsDrugs = true;
+	c->setTexture();
 
 	this->application->AddRenderable(koe);
 	this->application->AddRenderable(haas);
@@ -89,4 +127,51 @@ void NodeMap::setStates()
 {
 	koe->setState(new WanderingState(koe, this));
 	haas->setState(new WanderingState(haas, this));
+}
+
+
+void NodeMap::resetNodes()
+{
+	std::vector<Node*>::iterator wplace;
+	std::vector<Node*>::iterator dplace;
+	std::vector<Node*> temp = this->getCollection();
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(1, int(temp.size()));
+
+	bool placeWeapon = true;
+
+	for (wplace = temp.begin(); wplace != temp.end(); wplace++){
+		if ((*wplace)->containsWeapon){
+			placeWeapon = false;
+			break;
+		}
+	}
+
+	wplace = temp.begin() + dis(gen) - 1;		
+	while (placeWeapon)
+	{
+		if ((*wplace)->getBeestje() == nullptr)
+		{
+			(*wplace)->containsWeapon = true;
+			(*wplace)->setTexture();
+			placeWeapon = false;
+		}else
+		wplace = temp.begin() + dis(gen) - 1;
+	}
+	dplace = temp.begin() + dis(gen)  - 1;
+	while (true)
+	{
+		if ((*dplace)->getBeestje() == nullptr && (*dplace)->containsWeapon == false)
+		{
+			(*dplace)->containsDrugs = true;
+			(*dplace)->setTexture();
+			break;
+		}
+		dplace = temp.begin() + dis(gen) - 1;
+	}
+
+	
+
+
 }

@@ -19,7 +19,8 @@ public:
 
 	virtual void Draw() override;
 	virtual void Update(float deltaTime) override;
-	virtual void GiveWeapon(){ hasWeapon = true; };
+	virtual void SetBoots(){ hasBoots = !hasBoots; };
+	bool getBoots(){ return hasBoots; }
 	void setState(BaseState* state){ this->currentState = state; };
 	BaseState* getState(){ return currentState; };
 
@@ -29,7 +30,7 @@ public:
 	std::map<int, int> StateMap; // Goes from state to state
 	//  1, 2 means from wandering to drug
 	int getWander(){ return wanderAmount; };
-
+	void setWander(int wanderAmount){ this->wanderAmount = wanderAmount; }
 	int currentStateid = 1;
 
 	int NextState(){
@@ -42,9 +43,9 @@ public:
 	}
 
 private:
-	bool hasWeapon = false;
+	bool hasBoots = false;
 	Node* currentNode;
-	int wanderAmount = 4;
+	int wanderAmount = 1;
 protected:
 	BaseState* currentState;
 };

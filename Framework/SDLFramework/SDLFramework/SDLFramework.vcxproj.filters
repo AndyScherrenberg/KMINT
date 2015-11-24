@@ -53,9 +53,6 @@
     <ClCompile Include="WanderingState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="FindWeaponState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
     <ClCompile Include="FindDrugsState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -66,6 +63,9 @@
       <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="SleepState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="FindBootState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
@@ -109,9 +109,6 @@
     <ClInclude Include="HuntState.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="FindWeaponState.hpp">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
     <ClInclude Include="FindDrugsState.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -122,6 +119,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SleepState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="FindBootState.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>

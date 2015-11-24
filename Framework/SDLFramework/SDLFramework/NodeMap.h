@@ -18,6 +18,9 @@ private:
 	AlgoRitmeWeek1* aStar;
 	std::vector<Node*> nodeList;
 public:
+
+
+	void resetNodes();
 	NodeMap(FWApplication* application);
 	~NodeMap();
 	void Update();

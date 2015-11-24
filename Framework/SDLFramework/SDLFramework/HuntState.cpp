@@ -14,7 +14,8 @@ void HuntState::checkState(){
 	if (owner->getNode() == nodeMap->getHaas()->getNode())
     {
 		nodeMap->getHaas()->setState(StateFactory::createNextState(1, nodeMap->getHaas(), nodeMap));
-	owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
+		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
+		nodeMap->resetNodes();
     }
 }
 
@@ -23,11 +24,6 @@ void HuntState::Update(){
 	algoritme->doAction(nodeMap->getKoe(), nodeMap->getCollection(), nodeMap->getHaas());
     
 	if (nodeMap->getKoe()->getNode() == nodeMap->getHaas()->getNode()) {
-        // staan op elkaar
-        
-        //TODO Koe naar WANDERING state
-        
-        // Geef haas nieuwe plek
         Node* newHaasjeNode;
         do{
 			int random_index = rand() % nodeMap->getCollection().size();
@@ -37,4 +33,6 @@ void HuntState::Update(){
         
 		nodeMap->getHaas()->setNode(newHaasjeNode);
     }
+
+
 }

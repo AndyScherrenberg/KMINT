@@ -10,9 +10,10 @@ Koetje::Koetje()
 #endif
 
 	this->StateMap.insert(std::pair<int, int>(1, 2));
-	this->StateMap.insert(std::pair<int, int>(2, 3));
+	this->StateMap.insert(std::pair<int, int>(2, 4));
 	this->StateMap.insert(std::pair<int, int>(3, 4));
 	this->StateMap.insert(std::pair<int, int>(4, 1));
+	this->setWander(3);
 }
 
 
@@ -29,5 +30,20 @@ void Koetje::Draw(){
 void Koetje::Update(float deltaTime) {
     this->currentState->checkState();
     this->currentState->Update();
+
+	if (this->getBoots())
+	{
+		this->currentState->checkState();
+		this->currentState->Update();
+		usedBoots++;
+	}
+
+	if (usedBoots == 2)
+	{
+		this->SetBoots();
+		usedBoots = 0;
+	}
+
+	
 }
 

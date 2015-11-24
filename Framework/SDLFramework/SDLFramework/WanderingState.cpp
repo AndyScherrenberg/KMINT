@@ -27,7 +27,8 @@ void WanderingState::Update(){
 }
 
 void WanderingState::checkState(){
-		if (timesInWandering > owner->getWander()){
-   			owner->setState(StateFactory::createNextState(owner->NextState(),owner, nodeMap));
-		}
+
+	if (timesInWandering > owner->getWander()){
+		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
+	}
 }

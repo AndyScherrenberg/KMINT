@@ -4,13 +4,6 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
-#include "Node.h"
-#include "Koetje.h"
-#include "Haasje.h"
-#include "WanderingState.hpp"
-#include "FindWeaponState.hpp"
-#include "AlgoRitmeWeek1.h"
-#include "FindDrugsState.hpp"
 #include "NodeMap.h"
 int main()
 {
