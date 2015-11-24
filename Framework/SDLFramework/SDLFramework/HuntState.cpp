@@ -7,23 +7,22 @@
 //
 
 #include "HuntState.hpp"
-#include "WanderingCow.hpp"
+#include "WanderingState.hpp"
 void HuntState::checkState(){
 
 
-    if(owner->getNode() == haasje->getNode())
+	if (owner->getNode() == nodeMap->getHaas()->getNode())
     {
-        //TODO: GOTO wandering state
-		haasje->setState(new WanderingCow(haasje));
-		owner->setState(new WanderingCow(owner, collection, algoritme));
+		nodeMap->getHaas()->setState(StateFactory::createNextState(1, nodeMap->getHaas(), nodeMap));
+	owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
     }
 }
 
 void HuntState::Update(){
-    // TODO Start A*
-    algoritme->doAction(koe, collection, haasje);
+
+	algoritme->doAction(nodeMap->getKoe(), nodeMap->getCollection(), nodeMap->getHaas());
     
-    if (koe->getNode() == haasje->getNode()) {
+	if (nodeMap->getKoe()->getNode() == nodeMap->getHaas()->getNode()) {
         // staan op elkaar
         
         //TODO Koe naar WANDERING state
@@ -31,11 +30,11 @@ void HuntState::Update(){
         // Geef haas nieuwe plek
         Node* newHaasjeNode;
         do{
-            int random_index = rand() % collection.size();
-            newHaasjeNode = collection.at(random_index);
+			int random_index = rand() % nodeMap->getCollection().size();
+			newHaasjeNode = nodeMap->getCollection().at(random_index);
         }
-        while(newHaasjeNode == haasje->getNode());
+		while (newHaasjeNode == nodeMap->getHaas()->getNode());
         
-        haasje->setNode(newHaasjeNode);
+		nodeMap->getHaas()->setNode(newHaasjeNode);
     }
 }

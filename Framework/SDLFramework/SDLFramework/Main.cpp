@@ -7,13 +7,14 @@
 #include "Node.h"
 #include "Koetje.h"
 #include "Haasje.h"
-#include "WanderingCow.hpp"
+#include "WanderingState.hpp"
 #include "FindWeaponState.hpp"
 #include "AlgoRitmeWeek1.h"
 #include "FindDrugsState.hpp"
+#include "NodeMap.h"
 int main()
 {
-	AlgoRitmeWeek1* aStar = new AlgoRitmeWeek1;
+
 	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
 	if (!application->GetWindow())
@@ -28,91 +29,10 @@ int main()
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
-
-
-	std::vector<Node*> nodeList;
-
-	Node* a = new Node("A", 100, 200);
-	Node* b = new Node("B", 200, 100);
-	Node* c = new Node("C", 370, 100);
-	Node* d = new Node("D", 300, 180);
-	Node* e = new Node("E", 450, 200);
-	Node* f = new Node("F", 200, 300);
-	Node* g = new Node("G", 330, 300);
-
-	nodeList.push_back(a);
-	nodeList.push_back(b);
-	nodeList.push_back(c);
-	nodeList.push_back(d);
-	nodeList.push_back(e);
-	nodeList.push_back(f);
-	nodeList.push_back(g);
-
-	/*Node* h= new Node("H", 425, 360);
-	Node* i= new Node("I", 550, 480);
-	Node* j= new Node("K", 600, 378);
-	*/
-	Edge* ab = new Edge(a, b, 5000000);
-	Edge* bc = new Edge(b, c, 10000000);
-	Edge* bd = new Edge(b, d, 8000000);
-	Edge* dc = new Edge(d, c, 6000000);
-	Edge* dg = new Edge(d, g, 4000000);
-	Edge* fd = new Edge(f, d, 3000000);
-	Edge* af = new Edge(a, f, 9000000);
-	Edge* fg = new Edge(f, g, 2000000);
-	Edge* ge = new Edge(g, e, 7000000);
-
-	//	Edge* de = new Edge(d,e,);
-	Edge* ce = new Edge(c, e, 1);
-
-	//Draw Nodes
-	application->AddRenderable(a);
-	application->AddRenderable(b);
-	application->AddRenderable(c);
-	application->AddRenderable(d);
-	application->AddRenderable(e);
-	application->AddRenderable(f);
-	application->AddRenderable(g);
-
-	//Draw Edges
-	application->AddRenderable(ab);
-	application->AddRenderable(bc);
-	application->AddRenderable(bd);
-	application->AddRenderable(dc);
-
-	application->AddRenderable(dg);
-	application->AddRenderable(fd);
-
-	application->AddRenderable(af);
-	application->AddRenderable(fg);
-	application->AddRenderable(ge);
-	application->AddRenderable(ce);
-
-
-	//while (true){}
-
-	Koetje* koe = new Koetje();
-	Haasje* haas = new Haasje();
-
-
-	koe->setNode(a);
-	koe->setState(new WanderingCow(koe, nodeList, aStar));
-
-	a->setBeestje(koe);
-
-	haas->setNode(e);
-	haas->setState(new WanderingCow(haas));
-	e->setBeestje(haas);
-
-	application->AddRenderable(koe);
-	application->AddRenderable(haas);
-
-
-
-	//week.doAction(vkoef, nodeList,haas->getNode());
-
-	char cowStatus[100];
-	char rabitStatus[100];
+	NodeMap map{ application };
+	map.setStates();
+	char cowStatus[200];
+	char rabitStatus[200];
 
 	while (application->IsRunning())
 	{
@@ -129,33 +49,32 @@ int main()
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
 				case SDLK_SPACE:
-					//aStar.doAction(koe, nodeList,haas);
-					koe->Update(1.00);
-					haas->Update(1.00);
+					map.Update();
 					break;
 				default:
 					break;
 				}
 			}
 		}
-
+		
 #ifdef __APPLE__
 		strcpy(cowStatus, "Koe status = "); // copy string one into the result.
-		strcat(cowStatus, koe->getState()->stateToText());
+		strcat(cowStatus, map.getKoe()->getState()->stateToText());
 		strcpy(rabitStatus, "Haas status = "); // copy string one into the result.
-		strcat(rabitStatus, haas->getState()->stateToText());
+		strcat(rabitStatus, map.getHaas()->getState()->stateToText());
 #else
+
 		strcpy_s(cowStatus,"Koe status = "); // copy string one into the result.
-		strcat_s(cowStatus,koe->getState()->stateToText());
+		strcat_s(cowStatus,map.getKoe()->getState()->stateToText());
 		strcpy_s(rabitStatus, "Haas status = "); // copy string one into the result.
-		strcat_s(rabitStatus, haas->getState()->stateToText());
+		strcat_s(rabitStatus, map.getHaas()->getState()->stateToText());
 #endif
 
-
+		
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500);
-		application->DrawText("Groen is koe, Oranje is haas", 120, 520);
-		application->DrawText(cowStatus, 120, 540);
+		
+	application->DrawText(cowStatus, 120, 540);
 		application->DrawText(rabitStatus, 120, 560);
 		// For the background
 

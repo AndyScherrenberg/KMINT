@@ -14,18 +14,17 @@
 #include "Koetje.h"
 #include "Haasje.h"
 
-class HuntState : public CowState
+class HuntState : public BaseState
 {
 	AlgoRitmeWeek1* algoritme;
 	Koetje* koe;
 	std::vector<Node*> collection;
 	Haasje* haasje;
 public:
-	HuntState(Beestje* owner, Koetje* koe, std::vector<Node*> collection, Haasje* haasje) : CowState(owner){
-		this->collection;
-		this->haasje = haasje;
-	};
+
+	HuntState(Beestje* owner, NodeMap* nodemap) : BaseState(owner, nodemap){};
 	~HuntState();
+
 	const char* stateToText() override { return "Hunting"; };
 	void Update() override;
 	void checkState() override;

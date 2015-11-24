@@ -11,16 +11,16 @@
 #ifndef StateFactory_hpp
 #define StateFactory_hpp
 
-#include "CowState.hpp"
-#include "WanderingCow.hpp"
+#include "BaseState.hpp"
+#include "NodeMap.h"
 #include <stdio.h>
 
 class Beestje;
-
-class StateFactory{
+class NodeMap;
+static class StateFactory{
    
 public:
     StateFactory(){};
-    CowState* createNextCowState(int id,Beestje* beestje);
+	static BaseState* createNextState(int id, Beestje* beestje, NodeMap* nodemap);
 };
 #endif /* StateFactory_hpp */

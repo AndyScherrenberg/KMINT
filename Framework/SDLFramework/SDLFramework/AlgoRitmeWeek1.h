@@ -5,6 +5,8 @@
 #include "Koetje.h"
 #include "Haasje.h"
 
+class Koetje;
+class Haasje;
 class AlgoRitmeWeek1
 {
     void aStar(Beestje* beestje, std::vector<Node*> collection, Node* to);

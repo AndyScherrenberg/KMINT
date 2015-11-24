@@ -7,29 +7,24 @@
 //
 
 #include "FindDrugsState.hpp"
-#include "FindWeaponState.hpp"
-#include "HuntState.hpp"
-
-FindDrugsState::FindDrugsState(Beestje* beestje, std::vector<Node*> collection, AlgoRitmeWeek1* algoritme) : CowState(beestje){
+#include <iostream>
+FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
 
 	std::vector<Node*>::iterator dPlace;
-
+	std::vector<Node*> temp = nodemap->getCollection();
 	// srand(time(0)); // This will ensure a really randomized number by help of time.
-	int xRan = rand() % collection.size() + 1;
-	dPlace = collection.begin() + xRan - 1;
+	int xRan = rand() %  nodemap->getCollection().size() + 1;
+	dPlace = temp.begin() + xRan - 1;
 
-	if (beestje->getNode() == (*dPlace))
+	while (beestje->getNode() == (*dPlace))
 	{
-		dPlace = collection.begin() + xRan;
+		dPlace =  nodemap->getCollection().begin() + xRan;
 	}
 
 	this->drugPlace = (*dPlace);
 	this->drugPlace->containsDrugs = true;
-	this->algoritme = algoritme;
-	this->collection = collection;
-
-
 }
+
 void FindDrugsState::checkState(){
     if (owner->getNode()->containsDrugs) {
      //   srand(time(0));
@@ -37,18 +32,15 @@ void FindDrugsState::checkState(){
         if(xRan == 1)
         {
 			this->drugPlace->containsDrugs = false;
-			owner->setState(new FindWeaponState(owner,collection, algoritme));
+			owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
         }
         else{
             //TODO good drug -> goto hunting
-			//owner->setState(new HuntState(owner, collection, algoritme));       
+			owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
 		}
     }
 }
 
 void FindDrugsState::Update(){
-	algoritme->goToPlace(owner, collection, drugPlace);
-
-    //TODO zoek naar een drug node
-    
+	nodeMap->getAlgoritme()->goToPlace(owner, nodeMap->getCollection(), drugPlace);    
 }

@@ -10,19 +10,19 @@
 #define FindWeaponState_hpp
 
 #include <stdio.h>
-#include "CowState.hpp"
+#include "BaseState.hpp"
 #include "AlgoRitmeWeek1.h"
 
 
 
 
-class FindWeaponState: public CowState
+class FindWeaponState : public BaseState
 {
     Node* weaponPlace;
     AlgoRitmeWeek1* algoritme;
     std::vector<Node*> collection;
 public:
-    FindWeaponState(Beestje* beestje,std::vector<Node*> collection, AlgoRitmeWeek1* algoritme);
+	FindWeaponState(Beestje* beestje, NodeMap* nodemap) ;
     ~FindWeaponState();
     const char* stateToText() override {return "FindWeapon";};
     void Update() override;

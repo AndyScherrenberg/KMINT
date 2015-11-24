@@ -10,19 +10,16 @@
 #define DrugsState_hpp
 
 #include <stdio.h>
-#include "CowState.hpp"
+#include "BaseState.hpp"
 #include "AlgoRitmeWeek1.h"
 
-class FindDrugsState: public CowState
+class FindDrugsState : public BaseState
 {
 	Node* drugPlace;
 	AlgoRitmeWeek1* algoritme;
 	std::vector<Node*> collection;
 public:
-    FindDrugsState(Beestje* beestje): CowState(beestje){};
-
-	FindDrugsState(Beestje* beestje, std::vector<Node*> collection, AlgoRitmeWeek1* algoritme);
-
+	FindDrugsState(Beestje* beestje, NodeMap* nodemap);
 
     ~FindDrugsState();
     const char* stateToText() override {return "Drug Finding";};

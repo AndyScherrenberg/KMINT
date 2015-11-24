@@ -86,7 +86,7 @@
   <ItemGroup>
     <ClCompile Include="AlgoRitmeWeek1.cpp" />
     <ClCompile Include="Beestje.cpp" />
-    <ClCompile Include="CowState.cpp" />
+    <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FindDrugsState.cpp" />
     <ClCompile Include="FindWeaponState.cpp" />
@@ -96,8 +96,10 @@
     <ClCompile Include="Koetje.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeMap.cpp" />
+    <ClCompile Include="SleepState.cpp" />
     <ClCompile Include="StateFactory.cpp" />
-    <ClCompile Include="WanderingCow.cpp" />
+    <ClCompile Include="WanderingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -106,7 +108,7 @@
     <ClInclude Include="AlgoRitmeWeek1.h" />
     <ClInclude Include="Beestje.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="CowState.hpp" />
+    <ClInclude Include="BaseState.hpp" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FindDrugsState.hpp" />
     <ClInclude Include="FindWeaponState.hpp" />
@@ -116,8 +118,10 @@
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Koetje.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeMap.h" />
+    <ClInclude Include="SleepState.h" />
     <ClInclude Include="StateFactory.hpp" />
-    <ClInclude Include="WanderingCow.hpp" />
+    <ClInclude Include="WanderingState.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,34 +9,32 @@
 #include "FindWeaponState.hpp"
 #include <iostream>
 #include "HuntState.hpp"
-FindWeaponState::FindWeaponState(Beestje* beestje,std::vector<Node*> collection,AlgoRitmeWeek1* algoritme): CowState(beestje){
-    
-    std::vector<Node*>::iterator wplace;
 
-  // srand(time(0)); // This will ensure a really randomized number by help of time.
-    int xRan=rand()%collection.size()+1;
-    wplace = collection.begin() + xRan -1;
-    
-    if(beestje->getNode() == (*wplace))
-    {
-        wplace = collection.begin() + xRan;
-    }
+FindWeaponState::FindWeaponState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
 
-    this->weaponPlace = (*wplace);
+
+	std::vector<Node*>::iterator wplace;
+	std::vector<Node*> temp = nodemap->getCollection();
+	// srand(time(0)); // This will ensure a really randomized number by help of time.
+	int xRan = rand() % temp.size() + 1;
+	wplace = temp.begin() + xRan - 1;
+
+	if (beestje->getNode() == (*wplace))
+	{
+		wplace = nodemap->getCollection().begin() + xRan;
+	}
+
+	this->weaponPlace = (*wplace);
 	this->weaponPlace->containsWeapon = true;
-    this->algoritme = algoritme;
-    this->collection = collection;
 }
+
 
 void FindWeaponState::checkState(){
     if(owner->getNode() == this->weaponPlace)
     {
-        std::cout << "weapon found" << std::endl;
-		owner->GiveWeapon();        //TODO: Haas is dood en spel begint opnieuw.
+		owner->GiveWeapon(); 
 		this->weaponPlace->containsWeapon = false;
-	
-		owner->setState(new HuntState());
-
+		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
 	}
 }
 
