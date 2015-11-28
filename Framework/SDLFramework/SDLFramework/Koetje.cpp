@@ -12,7 +12,8 @@ Koetje::Koetje()
 	this->StateMap.insert(std::pair<int, int>(1, 2));
 	this->StateMap.insert(std::pair<int, int>(2, 4));
 	this->StateMap.insert(std::pair<int, int>(3, 4));
-	currentStateid = 4;
+	setBaseSate(4);
+	setBadDrugState(3);
 	this->setWander(3);
 }
 

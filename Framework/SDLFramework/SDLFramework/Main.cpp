@@ -64,14 +64,24 @@ int main()
 #endif
 
 		
+		std::string sleepChance = "Sleep%: " + std::to_string(map.getHaas()->sleepChance);
+		std::string findChance = " Find%: " + std::to_string(map.getHaas()->findChance);
+		std::string wanderchance = " Wander%: " + std::to_string(map.getHaas()->wanderChance);
+
+		
+		std::string cowCaught = " Cow catched: " + std::to_string(map.getKoe()->getCaught());
+		std::string rabitCaught = " Rabbit Catched:  " + std::to_string(map.getHaas()->getCaught());
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Opdracht week 1: Bryan + Andy", 120, 500);
 		
-	application->DrawText(cowStatus, 120, 540);
+		application->DrawText(cowStatus, 120, 540);
 		application->DrawText(rabitStatus, 120, 560);
-		// For the background
 
-		//application->UpdateGameObjects();
+		application->DrawText(cowCaught, 500, 460);
+		application->DrawText(rabitCaught, 500, 500);
+		application->DrawText(sleepChance + findChance + wanderchance, 120, 460);
+
+
 		application->RenderGameObjects();
 		application->EndTick();
 

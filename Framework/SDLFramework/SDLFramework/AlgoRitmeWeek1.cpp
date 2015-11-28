@@ -16,6 +16,7 @@ AlgoRitmeWeek1::AlgoRitmeWeek1()
 
 AlgoRitmeWeek1::~AlgoRitmeWeek1()
 {
+
 }
 
 

@@ -8,9 +8,19 @@ Haasje::Haasje()
     #else
         this->SetTexture(mApplication->LoadTexture("haas.png"));
     #endif
-		this->setWander(4);
-		this->StateMap.insert(std::pair<int, int>(1, 5));
-		this->StateMap.insert(std::pair<int, int>(5, 1));
+		this->setWander(3);
+
+
+
+		this->StateMap.insert(std::make_pair<int, int>(1, 2));
+		this->StateMap.insert(std::make_pair<int, int>(1, 5));
+		this->StateMap.insert(std::make_pair<int, int>(2, 4));
+		this->StateMap.insert(std::make_pair<int, int>(4, 1));
+		this->StateMap.insert(std::make_pair<int, int>(4, 2));
+		this->StateMap.insert(std::make_pair<int, int>(4, 5));
+		this->StateMap.insert(std::make_pair<int, int>(5, 2));
+		setBaseSate(1);	setBadDrugState(5);
+
 }
 
 

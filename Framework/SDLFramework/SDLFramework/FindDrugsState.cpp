@@ -9,22 +9,7 @@
 #include "FindDrugsState.hpp"
 #include <iostream>
 FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
-
-
-	// srand(time(0)); // This will ensure a really randomized number by help of time.
-//	int xRan = rand() %  nodemap->getCollection().size() + 1;
-//	dPlace = temp.begin() + xRan - 1;
-
-	std::vector<Node*> temp = nodemap->getCollection();
-	for (std::vector<Node*>::iterator node = temp.begin(); node != temp.end(); node++)
-	{
-		if ((*node)->containsDrugs == true)
-		{
-			this->drugPlace = ((*node));
-			this->drugPlace->containsDrugs = true;
-			break;
-		}
-	}
+	
 
 	
 }
@@ -32,12 +17,12 @@ FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(b
 void FindDrugsState::checkState(){
     if (owner->getNode()->containsDrugs) {
      //   srand(time(0));
+
         int xRan= rand()% 100;
         if(xRan > 49)
         {
 			this->drugPlace->containsDrugs = false;
-			owner->setState(StateFactory::createNextState(3, owner, nodeMap));
-			owner->currentStateid = 3;
+			owner->setState(StateFactory::createNextState(owner->getBadDrugState(), owner, nodeMap));
         }
         else{
             //TODO good drug -> goto hunting
@@ -48,5 +33,17 @@ void FindDrugsState::checkState(){
 }
 
 void FindDrugsState::Update(){
+		std::vector<Node*> temp = this->nodeMap->getCollection();
+	for (std::vector<Node*>::iterator node = temp.begin(); node != temp.end(); node++)
+	{
+		if ((*node)->containsDrugs == true)
+		{
+			this->drugPlace = ((*node));
+			this->drugPlace->containsDrugs = true;
+			break;
+		}
+	}
+
+
 	nodeMap->getAlgoritme()->goToPlace(owner, nodeMap->getCollection(), drugPlace);    
 }

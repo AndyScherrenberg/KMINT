@@ -55,7 +55,8 @@ NodeMap::NodeMap(FWApplication* application)
 	Edge* jl = new Edge(j, l, 10000002);
 
 	Edge* kl = new Edge(k, l, 6000000);
-	Edge* ik = new Edge(i, k, 5500000);
+	Edge* ij = new Edge(i, j, 5500000);
+	Edge* gk = new Edge(g, k, 20000000);
 	//Draw Nodes
 	this->application->AddRenderable(a);
 	this->application->AddRenderable(b);
@@ -89,10 +90,11 @@ NodeMap::NodeMap(FWApplication* application)
 	this->application->AddRenderable(jl);
 	this->application->AddRenderable(hj);
 
-	this->application->AddRenderable(ik);
+	this->application->AddRenderable(ij);
 
 
 	this->application->AddRenderable(kl);
+	this->application->AddRenderable(gk);
 	this->koe = new Koetje();
 	this->haas = new Haasje();
 
@@ -103,7 +105,7 @@ NodeMap::NodeMap(FWApplication* application)
 	haas->setNode(l);
 
 	koe->setTarget(haas);
-
+	haas->setTarget(koe);
 	l->setBeestje(haas);
 
 	f->containsWeapon = true;
@@ -112,6 +114,9 @@ NodeMap::NodeMap(FWApplication* application)
 
 	c->containsDrugs = true;
 	c->setTexture();
+
+	i->containsDrugs = true;
+	i->setTexture();
 
 	this->application->AddRenderable(koe);
 	this->application->AddRenderable(haas);
@@ -151,15 +156,21 @@ void NodeMap::resetNodes()
 	}
 
 	bool placeDrugs = true;
+	int drugsAmount = 0;
 
 	for (dplace = temp.begin(); dplace != temp.end(); dplace++){
 		if ((*dplace)->containsDrugs){
-			placeDrugs = false;
-			break;
+			drugsAmount++;
 		}
+		if (drugsAmount == 2)
+			break;
 	}
 
-	wplace = temp.begin() + dis(gen) - 1;		
+
+	if (drugsAmount == 2)
+		placeDrugs = false;
+
+	wplace = temp.begin() + dis(gen) - 1;
 	while (placeWeapon)
 	{
 		if ((*wplace)->getBeestje() == nullptr)
@@ -167,23 +178,26 @@ void NodeMap::resetNodes()
 			(*wplace)->containsWeapon = true;
 			(*wplace)->setTexture();
 			placeWeapon = false;
-		}else
-		wplace = temp.begin() + dis(gen) - 1;
+		}
+		else
+			wplace = temp.begin() + dis(gen) - 1;
 	}
-	dplace = temp.begin() + dis(gen)  - 1;
+	dplace = temp.begin() + dis(gen) - 1;
 	while (placeDrugs)
 	{
-		if ((*dplace)->getBeestje() == nullptr && (*dplace)->containsWeapon == false)
+		if ((*dplace)->getBeestje() == nullptr && (*dplace)->containsWeapon == false && (*dplace)->containsDrugs == false)
 		{
 			(*dplace)->containsDrugs = true;
 			(*dplace)->setTexture();
-			placeDrugs = false;
-		
-		}else
-		dplace = temp.begin() + dis(gen) - 1;
+
+			drugsAmount++;
+
+			if (drugsAmount == 2)
+				placeDrugs = false;
+
+		}
+		else
+			dplace = temp.begin() + dis(gen) - 1;
 	}
-
-	
-
 
 }

@@ -13,28 +13,26 @@ void HuntState::checkState(){
 
 	if (owner->getNode() == owner->getTarget()->getNode())
     {
+		owner->CalculateChance(true);
+		owner->increaseCaught();
 		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
-		owner->getTarget()->setState(StateFactory::createNextState(1, owner->getTarget(), nodeMap));
+ 		owner->getTarget()->CalculateChance(false);
+	
+		owner->getTarget()->setState(StateFactory::createNextState(owner->getTarget()->getBaseState(), owner->getTarget(), nodeMap));
 		nodeMap->resetNodes();
+
+		if (owner->getNode() == owner->getTarget()->getNode()) {
+			Node* newTargetNode;
+			do{
+				int random_index = rand() % nodeMap->getCollection().size();
+				newTargetNode = nodeMap->getCollection().at(random_index);
+			} while (newTargetNode == owner->getTarget()->getNode());
+
+			owner->getTarget()->setNode(newTargetNode);
+		}
     }
 }
 
 void HuntState::Update(){
-
-	
 	algoritme->doAction(owner, nodeMap->getCollection(), owner->getTarget());
-    
-	/*
-	if (nodeMap->getKoe()->getNode() == nodeMap->getHaas()->getNode()) {
-        Node* newHaasjeNode;
-        do{
-			int random_index = rand() % nodeMap->getCollection().size();
-			newHaasjeNode = nodeMap->getCollection().at(random_index);
-        }
-		while (newHaasjeNode == nodeMap->getHaas()->getNode());
-        
-		nodeMap->getHaas()->setNode(newHaasjeNode);
-    }*/
-
-
 }
