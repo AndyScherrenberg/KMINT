@@ -13,6 +13,7 @@ class Beestje : public IGameObject
 {
 
 
+
 public:
 	Beestje();
 	~Beestje();
@@ -42,10 +43,14 @@ public:
 		return 1;
 	}
 
+	void setTarget(Beestje* target){ this->target = target; }
+	Beestje* getTarget(){ return this->target; }
+
 private:
 	bool hasBoots = false;
 	Node* currentNode;
 	int wanderAmount = 1;
+	Beestje* target;
 protected:
 	BaseState* currentState;
 };

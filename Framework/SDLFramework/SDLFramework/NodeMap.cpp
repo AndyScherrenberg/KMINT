@@ -1,5 +1,6 @@
 #include "NodeMap.h"
 #include "WanderingState.hpp"
+#include "HuntState.hpp"
 #include <random>
 void NodeMap::Update()
 {
@@ -50,7 +51,6 @@ NodeMap::NodeMap(FWApplication* application)
 
 	Edge* ce = new Edge(c, e, 1);
 	Edge* eh = new Edge(e, h, 700000);
-	Edge* hi = new Edge(h, i, 750000);
 	Edge* hj = new Edge(h, j, 780000);
 	Edge* jl = new Edge(j, l, 10000002);
 
@@ -88,7 +88,7 @@ NodeMap::NodeMap(FWApplication* application)
 
 	this->application->AddRenderable(jl);
 	this->application->AddRenderable(hj);
-	this->application->AddRenderable(hi);
+
 	this->application->AddRenderable(ik);
 
 
@@ -101,6 +101,8 @@ NodeMap::NodeMap(FWApplication* application)
 	a->setBeestje(koe);
 
 	haas->setNode(l);
+
+	koe->setTarget(haas);
 
 	l->setBeestje(haas);
 
@@ -125,7 +127,7 @@ NodeMap::~NodeMap()
 
 void NodeMap::setStates()
 {
-	koe->setState(new WanderingState(koe, this));
+	koe->setState(new HuntState(koe, this));
 	haas->setState(new WanderingState(haas, this));
 }
 
@@ -148,6 +150,15 @@ void NodeMap::resetNodes()
 		}
 	}
 
+	bool placeDrugs = true;
+
+	for (dplace = temp.begin(); dplace != temp.end(); dplace++){
+		if ((*dplace)->containsDrugs){
+			placeDrugs = false;
+			break;
+		}
+	}
+
 	wplace = temp.begin() + dis(gen) - 1;		
 	while (placeWeapon)
 	{
@@ -160,14 +171,15 @@ void NodeMap::resetNodes()
 		wplace = temp.begin() + dis(gen) - 1;
 	}
 	dplace = temp.begin() + dis(gen)  - 1;
-	while (true)
+	while (placeDrugs)
 	{
 		if ((*dplace)->getBeestje() == nullptr && (*dplace)->containsWeapon == false)
 		{
 			(*dplace)->containsDrugs = true;
 			(*dplace)->setTexture();
-			break;
-		}
+			placeDrugs = false;
+		
+		}else
 		dplace = temp.begin() + dis(gen) - 1;
 	}
 

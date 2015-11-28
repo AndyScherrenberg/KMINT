@@ -15,6 +15,7 @@ public:
 	~AlgoRitmeWeek1();
     void setNewCawPlace(Node* newPlace, Beestje* koe);
 	void doAction(Koetje* koe, std::vector<Node*> collection,Haasje* haasje);
+	void doAction(Beestje* owner, std::vector<Node*> collection, Beestje* target);
     void goToPlace(Beestje* beestje, std::vector<Node*> collection, Node* destination);
 	bool doAlgoritme(std::map<Node*, int> &edgeWeight, std::map<Node *, Node *> &fromTo);
     int calculateTravelCost(Node* current, Node* destinations);

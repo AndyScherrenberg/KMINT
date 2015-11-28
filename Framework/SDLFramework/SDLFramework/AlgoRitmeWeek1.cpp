@@ -142,6 +142,11 @@ void AlgoRitmeWeek1::doAction(Koetje* koe, std::vector<Node*> collection, Haasje
     aStar(koe, collection, haasje->getNode());
 }
 
+void AlgoRitmeWeek1::doAction(Beestje* owner, std::vector<Node*> collection, Beestje* target){
+	aStar(owner, collection, target->getNode());
+}
+
+
 void AlgoRitmeWeek1::goToPlace(Beestje* beestje, std::vector<Node*> collection, Node* destination){
     aStar(beestje, collection, destination);
 }

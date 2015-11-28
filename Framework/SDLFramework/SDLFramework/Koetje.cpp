@@ -8,11 +8,11 @@ Koetje::Koetje()
 #else
     this->SetTexture(mApplication->LoadTexture("cow-2.png"));
 #endif
-
+	this->StateMap.insert(std::pair<int, int>(4, 1));
 	this->StateMap.insert(std::pair<int, int>(1, 2));
 	this->StateMap.insert(std::pair<int, int>(2, 4));
 	this->StateMap.insert(std::pair<int, int>(3, 4));
-	this->StateMap.insert(std::pair<int, int>(4, 1));
+	currentStateid = 4;
 	this->setWander(3);
 }
 

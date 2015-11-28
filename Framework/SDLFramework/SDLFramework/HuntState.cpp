@@ -11,17 +11,18 @@
 void HuntState::checkState(){
 
 
-	if (owner->getNode() == nodeMap->getHaas()->getNode())
+	if (owner->getNode() == owner->getTarget()->getNode())
     {
 		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
-		nodeMap->getHaas()->setState(StateFactory::createNextState(1, nodeMap->getHaas(), nodeMap));
+		owner->getTarget()->setState(StateFactory::createNextState(1, owner->getTarget(), nodeMap));
 		nodeMap->resetNodes();
     }
 }
 
 void HuntState::Update(){
 
-	algoritme->doAction(nodeMap->getKoe(), nodeMap->getCollection(), nodeMap->getHaas());
+	
+	algoritme->doAction(owner, nodeMap->getCollection(), owner->getTarget());
     
 	/*
 	if (nodeMap->getKoe()->getNode() == nodeMap->getHaas()->getNode()) {
