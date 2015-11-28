@@ -38,7 +38,7 @@ void Koetje::Update(float deltaTime) {
 		usedBoots++;
 	}
 
-	if (usedBoots == 2)
+	if (usedBoots >= 2)
 	{
 		this->SetBoots();
 		usedBoots = 0;

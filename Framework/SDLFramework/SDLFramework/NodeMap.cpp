@@ -50,8 +50,8 @@ NodeMap::NodeMap(FWApplication* application)
 
 	Edge* ce = new Edge(c, e, 1);
 	Edge* eh = new Edge(e, h, 700000);
-	Edge* hi = new Edge(h, i, 700000);
-	Edge* hj = new Edge(h, j, 700000);
+	Edge* hi = new Edge(h, i, 750000);
+	Edge* hj = new Edge(h, j, 780000);
 	Edge* jl = new Edge(j, l, 10000002);
 
 	Edge* kl = new Edge(k, l, 6000000);
@@ -88,7 +88,7 @@ NodeMap::NodeMap(FWApplication* application)
 
 	this->application->AddRenderable(jl);
 	this->application->AddRenderable(hj);
-
+	this->application->AddRenderable(hi);
 	this->application->AddRenderable(ik);
 
 
