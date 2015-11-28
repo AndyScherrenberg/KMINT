@@ -25,5 +25,6 @@ public:
     const char* stateToText() override {return "Drug Finding";};
     void Update() override;
     void checkState() override;
+	void CheckDrugs();
 };
 #endif

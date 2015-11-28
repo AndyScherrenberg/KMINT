@@ -9,31 +9,42 @@
 #include "FindDrugsState.hpp"
 #include <iostream>
 FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
-	
 
-	
+
+
 }
 
 void FindDrugsState::checkState(){
-    if (owner->getNode()->containsDrugs) {
-     //   srand(time(0));
-
-        int xRan= rand()% 100;
-        if(xRan > 49)
-        {
+	if (owner->getNode()->containsDrugs) {
+		//   srand(time(0));
+		if (this->drugPlace == nullptr)
+		{
+			CheckDrugs();
+		}
+		int xRan = rand() % 100;
+		if (xRan > 49)
+		{
 			this->drugPlace->containsDrugs = false;
 			owner->setState(StateFactory::createNextState(owner->getBadDrugState(), owner, nodeMap));
-        }
-        else{
-            //TODO good drug -> goto hunting
+		}
+		else{
+			//TODO good drug -> goto hunting
 			this->drugPlace->containsDrugs = false;
 			owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
 		}
-    }
+	}
 }
 
 void FindDrugsState::Update(){
-		std::vector<Node*> temp = this->nodeMap->getCollection();
+
+	CheckDrugs();
+
+	nodeMap->getAlgoritme()->goToPlace(owner, nodeMap->getCollection(), drugPlace);
+}
+
+void FindDrugsState::CheckDrugs()
+{
+	std::vector<Node*> temp = this->nodeMap->getCollection();
 	for (std::vector<Node*>::iterator node = temp.begin(); node != temp.end(); node++)
 	{
 		if ((*node)->containsDrugs == true)
@@ -43,7 +54,4 @@ void FindDrugsState::Update(){
 			break;
 		}
 	}
-
-
-	nodeMap->getAlgoritme()->goToPlace(owner, nodeMap->getCollection(), drugPlace);    
 }
