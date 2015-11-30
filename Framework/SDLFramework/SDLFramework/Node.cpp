@@ -34,7 +34,7 @@ void Node::setTexture()
 
 	if (this->containsDrugs){
 #ifdef __APPLE__
-		this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/haas.png"));
+		this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/pill.png"));
 #else
 		this->SetTexture(mApplication->LoadTexture("pill.png"));
 #endif

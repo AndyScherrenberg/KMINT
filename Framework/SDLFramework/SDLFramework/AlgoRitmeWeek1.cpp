@@ -85,17 +85,13 @@ void AlgoRitmeWeek1::aStar(Beestje* beestje, std::vector<Node*> collection, Node
             if (finder->traveledFrom == beestje->getNode()) {
                 // 1 stap voor de haas
                 setNewCawPlace(destination, beestje);
-                //                Node* newHaasjeNode;
-                //                do{
-                //                    int random_index = rand() % collection.size();
-                //                    newHaasjeNode = collection.at(random_index);
-                //                }
-                //                while(newHaasjeNode == haasje->getNode());
-                //
-                //                haasje->setNode(newHaasjeNode);
                 break;
             }
             //found
+            if(finder == nullptr)
+            {
+                finder = destination;
+            }
             while(finder->traveledFrom != beestje->getNode()){
                 finder = finder->traveledFrom;
             }

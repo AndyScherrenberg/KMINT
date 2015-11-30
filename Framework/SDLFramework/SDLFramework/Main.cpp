@@ -68,6 +68,7 @@ int main()
 		std::string sleepChance = "Sleep%: " + std::to_string(map.getHaas()->getSleepChancePercentage());
 		std::string findChance = " Find%: " + std::to_string(map.getHaas()->getFindChancePercentage());
 		std::string wanderchance = " Wander%: " + std::to_string(map.getHaas()->getWanderChancePercentage());
+        std::string huntchance = " Hunt%: " + std::to_string(map.getHaas()->getHuntChancePercentage());
 
 		
 		std::string cowCaught = " Cow catched: " + std::to_string(map.getKoe()->getCaught());
@@ -80,8 +81,8 @@ int main()
 
 		application->DrawText(cowCaught, 500, 460);
 		application->DrawText(rabitCaught, 500, 500);
-		application->DrawText(sleepChance + findChance + wanderchance, 120, 460);
-
+		application->DrawText(sleepChance + findChance + wanderchance + huntchance, 140, 460);
+       
 
 		application->RenderGameObjects();
 		application->EndTick();

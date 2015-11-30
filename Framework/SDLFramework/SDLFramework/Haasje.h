@@ -74,15 +74,15 @@ public:
 		{
 			if (positive)
 			{
-				wanderChance += 10;
+				wanderChance += 20;
 				findChance -= 5;
 				sleepChance -= 5;
 			}
 			else
 			{
-				wanderChance -= 5;
-				findChance += 10;
-				sleepChance += 5;
+				wanderChance -= 20;
+				findChance += 40;
+				sleepChance += 10;
 			}
 		}
         
@@ -91,15 +91,15 @@ public:
 		{
 			if (positive)
 			{
-				sleepChance += 10;
-				findChance -= 5;
-				wanderChance -= 5;
+				sleepChance += 1;
+				//findChance -= 5;
+				//wanderChance -= 5;
 			}
 			else
 			{
-				sleepChance -= 5;
-				wanderChance += 10;
-				findChance += 5;
+				sleepChance -= 80;
+				wanderChance += 80;
+				findChance += 80;
 			}
 		}
         
@@ -108,35 +108,58 @@ public:
 		{
 			if (positive)
 			{
-				findChance += 15;
-				sleepChance -= 5;
+				findChance += 60;
+				sleepChance -= 20;
 				wanderChance -= 5;
 			}
 			else
 			{
-				findChance -= 5;
-				sleepChance += 10;
-				wanderChance += 5;
+				findChance -= 25;
+				sleepChance += 1;
+				wanderChance += 10;
 			}
 		}
-
+        
+        //Hunt
+        if (getCurrentStateId() == 4)
+        {
+            if (positive)
+            {
+                huntChance += 100;
+                findChance -= 5;
+                sleepChance -= 20;
+                wanderChance -= 5;
+            }
+            else
+            {
+                huntChance-= 10;
+                findChance += 25;
+                sleepChance += 1;
+                wanderChance += 10;
+            }
+        }
     }
 
-	int sleepChance = 33;
-	int wanderChance = 33;
-	int findChance = 33;
+	int sleepChance = 25;
+	int wanderChance = 25;
+	int findChance = 25;
+    int huntChance = 25;
     
-    int sleepChancePercentage = 33;
-    int wanderChancePercentage = 33;
-    int findChancePercentage = 33;
+    int sleepChancePercentage = 25;
+    int wanderChancePercentage = 25;
+    int findChancePercentage = 25;
+    int huntChancePercentage = 25;
     
+    void calculateChancePercentage();
+
     int getSleepChancePercentage();
     int getWanderChancePercentage();
     int getFindChancePercentage();
-    void calculateChancePercentage();
+    int getHuntChancePercentage();
 
 	int wanderState = 1;
 	int sleepState = 5;
 	int findState = 2;
+    int huntState = 4;
 };
 

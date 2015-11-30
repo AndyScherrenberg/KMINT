@@ -18,7 +18,6 @@ Haasje::Haasje()
 		this->StateMap.insert(std::make_pair<int, int>(4, 5)); //hunt -> Sleep
 		this->StateMap.insert(std::make_pair<int, int>(5, 2)); //Sleep ->find
 		setBaseSate(1);	setBadDrugState(5);
-
 }
 
 
@@ -36,6 +35,7 @@ void Haasje::Draw(){
 void Haasje::Update(float deltaTime) {
     this->currentState->checkState();
     this->currentState->Update();
+    calculateChancePercentage();
 }
 
 int Haasje::getWanderChancePercentage(){
@@ -45,12 +45,23 @@ int Haasje::getWanderChancePercentage(){
 int Haasje::getSleepChancePercentage(){
     return sleepChancePercentage;
 }
+
 int Haasje::getFindChancePercentage(){
     return findChancePercentage;
 }
+
+int Haasje::getHuntChancePercentage(){
+    return huntChancePercentage;
+}
+
 void Haasje::calculateChancePercentage(){
-    int total = sleepChance + findChance + wanderChance;
+   
+    if (sleepChance < 0) {
+        sleepChance = 0;
+    }
+    int total = sleepChance + findChance + wanderChance + huntChance;
     
+    huntChancePercentage = (huntChance*100)/total;
     sleepChancePercentage = (sleepChance*100)/total;
     findChancePercentage = (findChance*100)/total;
     wanderChancePercentage = (wanderChance*100)/total;

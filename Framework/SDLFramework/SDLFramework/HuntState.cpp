@@ -19,7 +19,7 @@ void HuntState::checkState(){
  		owner->getTarget()->CalculateChance(false);
 	
 		owner->getTarget()->setState(StateFactory::createNextState(owner->getTarget()->getBaseState(), owner->getTarget(), nodeMap));
-		nodeMap->resetNodes();
+		nodeMap->resetNodes(); 
 
 		if (owner->getNode() == owner->getTarget()->getNode()) {
 			Node* newTargetNode;
