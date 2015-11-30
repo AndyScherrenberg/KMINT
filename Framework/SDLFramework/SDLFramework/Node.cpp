@@ -42,7 +42,11 @@ void Node::setTexture()
 
 	else if (this->containsWeapon)
 	{
-		this->SetTexture(mApplication->LoadTexture("boot.png"));
+#ifdef __APPLE__
+        this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/boot.png"));
+#else
+        this->SetTexture(mApplication->LoadTexture("boot.png"));
+#endif
 	}
 
 

@@ -1,7 +1,9 @@
 #pragma once
 #include "Beestje.h"
 #include "BaseState.hpp"
-#include <random>;
+#include <random>
+#include <iostream>
+
 class Haasje : public Beestje
 {
 public:
@@ -12,6 +14,7 @@ public:
 
 	virtual int NextState(){
 
+        //Random r
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> dis(1, 50);
@@ -31,12 +34,14 @@ public:
 					if (wanderChance > r)
 					{
 						newState = it->second;
+                        break; 
 					}
 				}
 				else if (it->second == sleepState){
 					if (sleepChance > r)
 					{
 						newState = it->second;
+                        break;
 					}
 				}
 
@@ -45,6 +50,7 @@ public:
  					if (findChance > r)
 					{
 						newState = it->second;
+                        break;
 					}
 				}
 				else{
@@ -63,6 +69,7 @@ public:
 
 	virtual void CalculateChance(bool positive)
 	{
+        //Wander
 		if (getCurrentStateId() == 1)
 		{
 			if (positive)
@@ -78,7 +85,8 @@ public:
 				sleepChance += 5;
 			}
 		}
-
+        
+        //Sleep
 		if (getCurrentStateId() == 5)
 		{
 			if (positive)
@@ -94,7 +102,8 @@ public:
 				findChance += 5;
 			}
 		}
-
+        
+        //FindDrug
 		if (getCurrentStateId() == 2)
 		{
 			if (positive)
@@ -111,21 +120,20 @@ public:
 			}
 		}
 
-		if (getCurrentStateId() == 6)
-		{
-			if (positive)
-			{
-				findChance += 15;
-				sleepChance -= 5;
-				wanderChance -= 5;
-			}
-		}
-
-	}
+    }
 
 	int sleepChance = 33;
 	int wanderChance = 33;
 	int findChance = 33;
+    
+    int sleepChancePercentage = 33;
+    int wanderChancePercentage = 33;
+    int findChancePercentage = 33;
+    
+    int getSleepChancePercentage();
+    int getWanderChancePercentage();
+    int getFindChancePercentage();
+    void calculateChancePercentage();
 
 	int wanderState = 1;
 	int sleepState = 5;

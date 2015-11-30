@@ -63,10 +63,11 @@ int main()
 		strcat_s(rabitStatus, map.getHaas()->getState()->stateToText());
 #endif
 
-		
-		std::string sleepChance = "Sleep%: " + std::to_string(map.getHaas()->sleepChance);
-		std::string findChance = " Find%: " + std::to_string(map.getHaas()->findChance);
-		std::string wanderchance = " Wander%: " + std::to_string(map.getHaas()->wanderChance);
+        map.getHaas()->calculateChancePercentage();
+
+		std::string sleepChance = "Sleep%: " + std::to_string(map.getHaas()->getSleepChancePercentage());
+		std::string findChance = " Find%: " + std::to_string(map.getHaas()->getFindChancePercentage());
+		std::string wanderchance = " Wander%: " + std::to_string(map.getHaas()->getWanderChancePercentage());
 
 		
 		std::string cowCaught = " Cow catched: " + std::to_string(map.getKoe()->getCaught());
