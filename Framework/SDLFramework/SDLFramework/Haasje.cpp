@@ -56,9 +56,15 @@ int Haasje::getHuntChancePercentage(){
 
 void Haasje::calculateChancePercentage(){
    
-    if (sleepChance < 0) {
+    if (sleepChance < 0)
         sleepChance = 0;
-    }
+    if(findChance < 0)
+        findChance = 0;
+    if(wanderChance < 0)
+        wanderChance = 0;
+    if(huntChance < 0)
+        huntChance = 0;
+    
     int total = sleepChance + findChance + wanderChance + huntChance;
     
     huntChancePercentage = (huntChance*100)/total;
