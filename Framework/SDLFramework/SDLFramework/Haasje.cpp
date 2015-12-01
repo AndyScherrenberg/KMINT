@@ -20,12 +20,9 @@ Haasje::Haasje()
 		setBaseSate(1);	setBadDrugState(5);
 }
 
-
-
 Haasje::~Haasje()
 {
 }
-
 
 void Haasje::Draw(){
 
