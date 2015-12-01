@@ -92,7 +92,7 @@ void AlgoRitmeWeek1::aStar(Beestje* beestje, std::vector<Node*> collection, Node
             {
                 finder = destination;
             }
-            while(finder->traveledFrom != beestje->getNode()){
+                while(finder->traveledFrom != beestje->getNode()){
                 finder = finder->traveledFrom;
             }
             setNewCawPlace(finder, beestje);
