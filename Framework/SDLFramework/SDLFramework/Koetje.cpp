@@ -4,9 +4,9 @@
 Koetje::Koetje()
 {
 #ifdef __APPLE__
-    this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/cow-2.png"));
+	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/cow-2.png"));
 #else
-    this->SetTexture(mApplication->LoadTexture("cow-2.png"));
+	this->SetTexture(mApplication->LoadTexture("cow-2.png"));
 #endif
 	this->StateMap.insert(std::pair<int, int>(4, 1));
 	this->StateMap.insert(std::pair<int, int>(1, 2));
@@ -19,32 +19,34 @@ Koetje::Koetje()
 
 
 Koetje::~Koetje()
-{ 
+{
 
 }
 
 void Koetje::Draw(){
 
-	mApplication->DrawTexture(this->GetTexture(), this->getNode()->x, this->getNode()->y,50,50);
+	mApplication->DrawTexture(this->GetTexture(), this->getNode()->x, this->getNode()->y, 50, 50);
 	mApplication->SetColor(Color(0, 155, 0, 255));
 }
 void Koetje::Update(float deltaTime) {
-    this->currentState->checkState();
-    this->currentState->Update();
+	this->currentState->Update();
+	this->currentState->checkState();
 
-	if (this->getBoots())
+
+	/*if (this->getBoots())
 	{
-		this->currentState->checkState();
-		this->currentState->Update();
-		usedBoots++;
+	this->currentState->Update();
+	this->currentState->checkState();
+
+	usedBoots++;
 	}
 
 	if (usedBoots >= 2)
 	{
-		this->SetBoots();
-		usedBoots = 0;
-	}
+	this->SetBoots();
+	usedBoots = 0;
+	}*/
 
-	
+
 }
 

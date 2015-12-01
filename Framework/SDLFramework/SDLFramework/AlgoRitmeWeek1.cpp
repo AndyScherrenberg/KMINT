@@ -88,7 +88,7 @@ void AlgoRitmeWeek1::aStar(Beestje* beestje, std::vector<Node*> collection, Node
                 break;
             }
             //found
-            if(finder == nullptr)
+            if(finder == NULL)
             {
                 finder = destination;
             }
