@@ -11,7 +11,7 @@
 
 FindBootState::FindBootState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
 
-
+    this->collection = nodemap->getCollection();
 	std::vector<Node*> temp = nodemap->getCollection();
 	for (std::vector<Node*>::iterator node = temp.begin(); node != temp.end(); node++)
 	{
