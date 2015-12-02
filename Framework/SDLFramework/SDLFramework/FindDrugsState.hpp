@@ -26,5 +26,6 @@ public:
     void Update() override;
     void checkState() override;
 	void CheckDrugs();
+	void CreateDrugs();
 };
 #endif

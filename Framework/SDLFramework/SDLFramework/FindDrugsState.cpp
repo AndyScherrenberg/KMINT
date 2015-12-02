@@ -8,37 +8,35 @@
 
 #include "FindDrugsState.hpp"
 #include <iostream>
-FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
-
-
-
+#include "Node.h"
+FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){	
+	CreateDrugs();
 }
 
 void FindDrugsState::checkState(){
+	CheckDrugs();
+
+
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(1, 100);
+	int random = dis(gen) - 1;
+	int state = owner->getBadDrugState();
+	if (random < 50)
+		state = owner->NextState();
+
 	if (owner->getNode()->containsDrugs) {
-		//   srand(time(0));
-		if (this->drugPlace == nullptr)
-		{
-			CheckDrugs();
-		}
-		int xRan = rand() % 100;
-		if (xRan > 49)
-		{
-			this->drugPlace->containsDrugs = false;
-			owner->setState(StateFactory::createNextState(owner->getBadDrugState(), owner, nodeMap));
-		}
-		else{
-			//TODO good drug -> goto hunting
-			this->drugPlace->containsDrugs = false;
-			owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
-		}
+		
+		this->drugPlace->containsDrugs = false;
+		this->drugPlace = nullptr;
+		CreateDrugs();
+		owner->setState(StateFactory::createNextState(state, owner, nodeMap));
+	
 	}
 }
 
 void FindDrugsState::Update(){
-
 	CheckDrugs();
-
 	nodeMap->getAlgoritme()->goToPlace(owner, nodeMap->getCollection(), drugPlace);
 }
 
@@ -50,8 +48,51 @@ void FindDrugsState::CheckDrugs()
 		if ((*node)->containsDrugs == true)
 		{
 			this->drugPlace = ((*node));
-			this->drugPlace->containsDrugs = true;
 			break;
 		}
 	}
+}
+void FindDrugsState::CreateDrugs(){
+	std::vector<Node*>::iterator dplace;
+	std::vector<Node*> temp = nodeMap->getCollection();
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(1, int(temp.size()));
+
+	bool placeDrugs = true;
+
+	int drugsAmount = 0;
+	for (dplace = temp.begin(); dplace != temp.end(); dplace++){
+		if ((*dplace)->containsDrugs){
+			drugsAmount++;
+		}
+		if (drugsAmount == 1)
+			break;
+	}
+
+	if (drugsAmount == 1)
+		placeDrugs = false;
+
+	dplace = temp.begin() + dis(gen) - 1;
+	//	int i = 0;
+	while (placeDrugs)
+	{
+		if ((*dplace)->getBeestje() == nullptr && (*dplace)->containsWeapon == false && (*dplace)->containsDrugs == false)
+		{
+			(*dplace)->containsDrugs = true;
+			(*dplace)->setTexture();
+			placeDrugs = false;
+
+			drugsAmount++;
+
+			if (drugsAmount == 1)
+				placeDrugs = false;
+
+		}
+		else{
+			dplace = temp.begin() + dis(gen) - 1;
+		}
+	}
+
+	CheckDrugs();
 }

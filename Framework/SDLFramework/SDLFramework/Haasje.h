@@ -31,14 +31,14 @@ public:
 			{
 				if (it->second == wanderState)
 				{
-					if (wanderChance > r)
+					if (wanderChance > r || (wanderChancePercentage < 10 && r >50))
 					{
 						newState = it->second;
                         break; 
 					}
 				}
 				else if (it->second == sleepState){
-					if (sleepChance > r)
+					if (sleepChance > r || (sleepChancePercentage < 10 && r >50))
 					{
 						newState = it->second;
                         break;
@@ -47,7 +47,7 @@ public:
 
 				else if (it->second == findState)
 				{
- 					if (findChance > r)
+					if (findChance > r || (findChancePercentage < 10 && r >50))
 					{
 						newState = it->second;
                         break;

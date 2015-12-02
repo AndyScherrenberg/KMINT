@@ -27,6 +27,8 @@ public:
     const char* stateToText() override {return "Find Boots";};
     void Update() override;
     void checkState() override;
+	void CreateWeapon();
+	void CheckWeapon();
 };
 
 #endif /* FindWeaponState_hpp */
