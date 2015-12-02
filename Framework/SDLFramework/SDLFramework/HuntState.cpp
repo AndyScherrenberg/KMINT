@@ -34,4 +34,5 @@ void HuntState::checkState(){
 
 void HuntState::Update(){
 	algoritme->doAction(owner, nodeMap->getCollection(), owner->getTarget());
+    checkState();
 }

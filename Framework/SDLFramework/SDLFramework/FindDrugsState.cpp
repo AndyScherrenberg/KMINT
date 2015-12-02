@@ -14,9 +14,8 @@ FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(b
 }
 
 void FindDrugsState::checkState(){
-	CheckDrugs();
-
-
+	
+    CheckDrugs();
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(1, 100);
@@ -72,8 +71,10 @@ void FindDrugsState::CreateDrugs(){
 
 	if (drugsAmount == 1)
 		placeDrugs = false;
+    
+    int i = dis(gen) - 1;
 
-	dplace = temp.begin() + dis(gen) - 1;
+	dplace = temp.begin() + i;
 	//	int i = 0;
 	while (placeDrugs)
 	{
@@ -90,7 +91,8 @@ void FindDrugsState::CreateDrugs(){
 
 		}
 		else{
-			dplace = temp.begin() + dis(gen) - 1;
+            int j = dis(gen) - 1;
+			dplace = temp.begin() + j;
 		}
 	}
 

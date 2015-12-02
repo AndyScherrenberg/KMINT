@@ -67,9 +67,9 @@ void FindBootState::CreateWeapon(){
 		}
 	}
 
-	int i = 0;
+	int i = dis(gen) -1;
 
-	wplace = temp.begin() + dis(gen) - 1;
+	wplace = temp.begin() + i;
 	while (placeWeapon)
 	{
 		if ((*wplace)->getBeestje() == nullptr && (*wplace)->containsDrugs == false)
@@ -79,7 +79,10 @@ void FindBootState::CreateWeapon(){
 			placeWeapon = false;
 		}
 		else{
-			wplace = temp.begin() + dis(gen) - 1;
+            std::mt19937 gen(rd());
+            std::uniform_int_distribution<> dis(1, int(temp.size()));
+            int j = dis(gen) -1;
+			wplace = temp.begin() + j;
 		}
 	}
 }

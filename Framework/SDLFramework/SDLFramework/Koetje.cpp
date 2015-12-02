@@ -29,24 +29,8 @@ void Koetje::Draw(){
 	mApplication->SetColor(Color(0, 155, 0, 255));
 }
 void Koetje::Update(float deltaTime) {
-	this->currentState->Update();
+	
 	this->currentState->checkState();
-
-
-	/*if (this->getBoots())
-	{
-	this->currentState->Update();
-	this->currentState->checkState();
-
-	usedBoots++;
-	}
-
-	if (usedBoots >= 2)
-	{
-	this->SetBoots();
-	usedBoots = 0;
-	}*/
-
-
+    this->currentState->Update();
 }
 

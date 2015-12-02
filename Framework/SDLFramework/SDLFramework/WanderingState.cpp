@@ -29,6 +29,8 @@ void WanderingState::Update(){
 void WanderingState::checkState(){
 
 	if (timesInWandering > owner->getWander()){
+        if(dynamic_cast<Haasje*>(owner))
+           dynamic_cast<Haasje*>(owner)->wanderChance += 40;
 		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
 	}
 }

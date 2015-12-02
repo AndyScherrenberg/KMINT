@@ -31,14 +31,14 @@ public:
 			{
 				if (it->second == wanderState)
 				{
-					if (wanderChance > r || (wanderChancePercentage < 10 && r >50))
+					if (r < wanderChance || (wanderChancePercentage < 10 && r >25))
 					{
 						newState = it->second;
                         break; 
 					}
 				}
 				else if (it->second == sleepState){
-					if (sleepChance > r || (sleepChancePercentage < 10 && r >50))
+					if (r < sleepChance || (sleepChancePercentage < 10 && r >1))
 					{
 						newState = it->second;
                         break;
@@ -47,7 +47,7 @@ public:
 
 				else if (it->second == findState)
 				{
-					if (findChance > r || (findChancePercentage < 10 && r >50))
+					if ( r < findChance || (findChancePercentage < 10 && r >25))
 					{
 						newState = it->second;
                         break;
@@ -74,13 +74,13 @@ public:
 		{
 			if (positive)
 			{
-				wanderChance += 20;
+				wanderChance += 50;
 				findChance -= 5;
 				sleepChance -= 5;
 			}
 			else
 			{
-				wanderChance -= 20;
+				wanderChance -= 10;
 				findChance += 40;
 				sleepChance += 10;
 			}
@@ -125,7 +125,7 @@ public:
         {
             if (positive)
             {
-                huntChance += 100;
+                huntChance += 80;
                 findChance -= 5;
                 sleepChance -= 20;
                 wanderChance -= 5;
