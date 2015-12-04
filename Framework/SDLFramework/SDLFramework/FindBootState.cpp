@@ -55,8 +55,8 @@ void FindBootState::CreateWeapon(){
 
 	std::vector<Node*> temp = nodeMap->getCollection();
 	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(1, int(temp.size()));
+	std::default_random_engine gen(rd());
+	std::uniform_int_distribution<int> dis(1, int(temp.size()));
 
 	bool placeWeapon = true;
 
@@ -79,8 +79,6 @@ void FindBootState::CreateWeapon(){
 			placeWeapon = false;
 		}
 		else{
-            std::mt19937 gen(rd());
-            std::uniform_int_distribution<> dis(1, int(temp.size()));
             int j = dis(gen) -1;
 			wplace = temp.begin() + j;
 		}
