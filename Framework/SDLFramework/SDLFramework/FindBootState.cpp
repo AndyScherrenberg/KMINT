@@ -18,7 +18,6 @@ FindBootState::FindBootState(Beestje* beestje, NodeMap* nodemap) : BaseState(bee
 
     this->collection = nodemap->getCollection();
 
-	std::uniform_int_distribution<int> dis(0, this->collection.size());
 
 
 	CreateWeapon();

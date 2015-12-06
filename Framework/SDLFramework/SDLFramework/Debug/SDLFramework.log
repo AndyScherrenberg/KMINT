@@ -1,0 +1,59 @@
+﻿Build started 6-12-2015 22:16:45.
+     1>Project "D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\SDLFramework.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Programming\Visual Studio 2013\VC\bin\CL.exe /c /I"D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\../../SDL2-2.0.3/include" /I"D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\../../SDL2_ttf-2.0.12/include" /I"D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\../../SDL2_image-2.0.0/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AlgoRitmeWeek1.cpp BaseState.cpp FindBootState.cpp FindDrugsState.cpp Haasje.cpp HuntState.cpp Koetje.cpp Main.cpp NodeMap.cpp SleepState.cpp StateFactory.cpp WanderingState.cpp
+         FindDrugsState.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\finddrugsstate.cpp(19): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\finddrugsstate.cpp(73): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         FindBootState.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\findbootstate.cpp(65): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Generating Code...
+         Compiling...
+         WanderingState.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\wanderingstate.cpp(21): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         StateFactory.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         SleepState.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         NodeMap.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         Main.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         Koetje.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         HuntState.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         Haasje.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         BaseState.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+         AlgoRitmeWeek1.cpp
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\statefactory.hpp(25): warning C4091: 'static ' : ignored on left of 'StateFactory' when no variable is declared
+     1>d:\projects\c++\kmintv3\framework\sdlframework\sdlframework\algoritmeweek1.cpp(28): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+         Generating Code...
+       Link:
+         D:\Programming\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects\C++\KMINTv3\Framework\SDLFramework\Debug\SDLFramework.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\../../SDL2-2.0.3/lib/x86" /LIBPATH:"D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\../../SDL2_ttf-2.0.12/lib/x86" /LIBPATH:"D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\../../SDL2_image-2.0.0/lib/x86" SDL2.lib SDL2main.lib SDL2test.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Projects\C++\KMINTv3\Framework\SDLFramework\Debug\SDLFramework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Projects\C++\KMINTv3\Framework\SDLFramework\Debug\SDLFramework.lib" /MACHINE:X86 Debug\AlgoRitmeWeek1.obj
+         Debug\Beestje.obj
+         Debug\BaseState.obj
+         Debug\Edge.obj
+         Debug\FindDrugsState.obj
+         Debug\FindBootState.obj
+         Debug\FWApplication.obj
+         Debug\Haasje.obj
+         Debug\HuntState.obj
+         Debug\Koetje.obj
+         Debug\Main.obj
+         Debug\Node.obj
+         Debug\NodeMap.obj
+         Debug\SleepState.obj
+         Debug\StateFactory.obj
+         Debug\WanderingState.obj
+         SDLFramework.vcxproj -> D:\Projects\C++\KMINTv3\Framework\SDLFramework\Debug\SDLFramework.exe
+     1>Done Building Project "D:\Projects\C++\KMINTv3\Framework\SDLFramework\SDLFramework\SDLFramework.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.04
