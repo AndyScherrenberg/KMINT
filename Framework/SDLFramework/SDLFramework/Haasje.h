@@ -97,7 +97,7 @@ public:
 			}
 			else
 			{
-				sleepChance -= 80;
+				sleepChance -= 40;
 				wanderChance += 80;
 				findChance += 80;
 			}
