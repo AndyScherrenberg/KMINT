@@ -6,12 +6,20 @@
 //  Copyright © 2015 Bryan Sijs. All rights reserved.
 //
 
+
 #include "FindBootState.hpp"
 #include <iostream>
 
 FindBootState::FindBootState(Beestje* beestje, NodeMap* nodemap) : BaseState(beestje, nodemap){
 
+
+
+
+
     this->collection = nodemap->getCollection();
+
+	std::uniform_int_distribution<int> dis(0, this->collection.size());
+
 
 	CreateWeapon();
 	CheckWeapon();
@@ -54,9 +62,13 @@ void FindBootState::CreateWeapon(){
 	std::vector<Node*>::iterator wplace;
 
 	std::vector<Node*> temp = nodeMap->getCollection();
-	std::random_device rd;
-	std::default_random_engine gen(rd());
-	std::uniform_int_distribution<int> dis(1, int(temp.size()));
+
+	srand(time(NULL));
+
+	/* generate secret number between 1 and 10: */
+	// int iSecret =
+
+
 
 	bool placeWeapon = true;
 
@@ -67,9 +79,9 @@ void FindBootState::CreateWeapon(){
 		}
 	}
 
-	int i = dis(gen) -1;
+	int i = rand() % 6 + 1;
 
-	wplace = temp.begin() + i;
+    wplace = temp.begin() + i;
 	while (placeWeapon)
 	{
 		if ((*wplace)->getBeestje() == nullptr && (*wplace)->containsDrugs == false)
@@ -79,7 +91,7 @@ void FindBootState::CreateWeapon(){
 			placeWeapon = false;
 		}
 		else{
-            int j = dis(gen) -1;
+			int j = rand() % 6 + 1;
 			wplace = temp.begin() + j;
 		}
 	}

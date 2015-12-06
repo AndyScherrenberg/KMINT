@@ -15,11 +15,14 @@ FindDrugsState::FindDrugsState(Beestje* beestje, NodeMap* nodemap) : BaseState(b
 
 void FindDrugsState::checkState(){
 	
-    CheckDrugs();
+	CheckDrugs();
+	srand(time(NULL));
+	int random = rand() % 100 + 1;
+	/*
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(1, 100);
-	int random = dis(gen) - 1;
+	int random = dis(gen) - 1;*/
 	int state = owner->getBadDrugState();
 	if (random < 50)
 		state = owner->NextState();
@@ -54,10 +57,6 @@ void FindDrugsState::CheckDrugs()
 void FindDrugsState::CreateDrugs(){
 	std::vector<Node*>::iterator dplace;
 	std::vector<Node*> temp = nodeMap->getCollection();
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(1, int(temp.size()));
-
 	bool placeDrugs = true;
 
 	int drugsAmount = 0;
@@ -71,8 +70,8 @@ void FindDrugsState::CreateDrugs(){
 
 	if (drugsAmount == 1)
 		placeDrugs = false;
-    
-    int i = dis(gen) - 1;
+	srand(time(NULL));
+	int i =   rand() % 6 + 1;
 
 	dplace = temp.begin() + i;
 	//	int i = 0;
@@ -91,7 +90,7 @@ void FindDrugsState::CreateDrugs(){
 
 		}
 		else{
-            int j = dis(gen) - 1;
+			int j = rand() % 6 + 1;
 			dplace = temp.begin() + j;
 		}
 	}

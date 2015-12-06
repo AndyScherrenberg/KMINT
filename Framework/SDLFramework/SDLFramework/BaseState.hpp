@@ -11,8 +11,10 @@
 
 
 #include <stdio.h>
+#include "StaticRandom.h"
 #include "Beestje.h"
 #include "NodeMap.h"
+#include <time.h>       /* time */
 
 class NodeMap;
 class Beestje;

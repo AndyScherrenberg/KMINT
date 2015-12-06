@@ -13,14 +13,17 @@
 #include "BaseState.hpp"
 #include "AlgoRitmeWeek1.h"
 
-
-
-
 class FindBootState : public BaseState
 {
     Node* weaponPlace;
     AlgoRitmeWeek1* algoritme;
     std::vector<Node*> collection;
+
+	std::random_device rd;
+	std::default_random_engine gen;
+	std::uniform_int_distribution<int> dis;
+
+
 public:
 	FindBootState(Beestje* beestje, NodeMap* nodemap);
 	~FindBootState();
