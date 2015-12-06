@@ -1,6 +1,5 @@
 #pragma once
 #include "IGameObject.h"
-#include "Node.h"
 #include <map>
 
 #ifndef Beestje_hpp
