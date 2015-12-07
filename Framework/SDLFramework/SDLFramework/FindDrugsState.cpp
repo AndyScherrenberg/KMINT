@@ -32,6 +32,9 @@ void FindDrugsState::checkState(){
 		this->drugPlace->containsDrugs = false;
 		this->drugPlace = nullptr;
 		CreateDrugs();
+		if (dynamic_cast<Haasje*>(owner)){
+			dynamic_cast<Haasje*>(owner)->findChance += 25;
+		}
 		owner->setState(StateFactory::createNextState(state, owner, nodeMap));
 	
 	}

@@ -125,7 +125,7 @@ public:
         {
             if (positive)
             {
-                huntChance += 80;
+                huntChance += 70;
                 findChance -= 5;
                 sleepChance -= 20;
                 wanderChance -= 5;
