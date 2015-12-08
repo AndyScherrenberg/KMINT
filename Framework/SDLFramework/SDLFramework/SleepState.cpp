@@ -17,7 +17,8 @@ void SleepState::checkState(){
 void SleepState::Update(){
 	if (sleepAmount >= sleepTurn){
 		if (dynamic_cast<Haasje*>(owner))
-			dynamic_cast<Haasje*>(owner)->sleepChance += 15;
+			dynamic_cast<Haasje*>(owner)->sleepChance += 20;
+	//	owner->CalculateChance(true);
 
 		owner->setState(StateFactory::createNextState(owner->NextState(), owner, nodeMap));
 	}

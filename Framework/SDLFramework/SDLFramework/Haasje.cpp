@@ -12,6 +12,7 @@ Haasje::Haasje()
     
 		this->StateMap.insert(std::make_pair<int, int>(1, 5)); // Wander ->sleep
 		this->StateMap.insert(std::make_pair<int, int>(1, 2)); // Wander -> find
+		//this->StateMap.insert(std::make_pair<int, int>(1, 4)); // Wander -> hunt
 		this->StateMap.insert(std::make_pair<int, int>(2, 4)); // find -> hunt
 		this->StateMap.insert(std::make_pair<int, int>(4, 1)); // hunt -> wander
 		this->StateMap.insert(std::make_pair<int, int>(4, 2)); // hunt -> find
