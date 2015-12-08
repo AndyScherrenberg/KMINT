@@ -28,6 +28,40 @@ public:
 		return (x > vector->x);
 	}
 
+	bool operator ==(const Vector2D& vector) const
+	{
+		if (this->x == vector.x && this->y == vector.y){
+			return true;
+		}
+		return false;
+	}
+
+
+
+	Vector2D& Vector2D::operator+=(const Vector2D& vector)
+	{
+		this->x += vector.x;
+		this->y += vector.y;
+		return *this;
+	}
+
+	Vector2D& Vector2D::operator-=(const Vector2D& vector)
+	{
+		this->x -= vector.x;
+		this->y -= vector.y;
+		return *this;
+	}
+
+
+	Vector2D& Vector2D::operator*=(const Vector2D& vector)
+	{
+	
+		this->x = x * vector.x + x * vector.y;
+		this->y = y * vector.x + y * vector.y;
+		return *this;
+	}
+
+
 	Vector2D operator +(const Vector2D& vector) const
 	{
 		Vector2D vec;
