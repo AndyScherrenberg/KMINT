@@ -7,3 +7,8 @@
 //
 
 #include "MovingEntity.hpp"
+
+
+void MovingEntitiy::Update(double deltaTime)
+{
+}

@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+Framework/SDLFramework/SDLFramework/Debug/vc120.pdb
+Framework/SDLFramework/SDLFramework/Debug/SDLFramework.log
+Framework/SDLFramework/SDLFramework.opensdf
+Framework/SDLFramework/Debug/SDLFramework.ilk
+Framework/SDLFramework/Debug/SDLFramework.pdb
