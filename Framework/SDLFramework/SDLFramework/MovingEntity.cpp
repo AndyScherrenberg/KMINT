@@ -19,5 +19,12 @@ void MovingEntitiy::Update(double deltaTime)
 
 	//Hier moeten we trunctate;
 	
+	velocity.Trunctate(maxSpeed);
+
 	postion += velocity * deltaTime;
+
+	if (velocity.LenghtSq() > 0.00000001)
+	{
+		heading = velocity.NormalizeVector(velocity);
+	}
 }

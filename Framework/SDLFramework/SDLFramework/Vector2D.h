@@ -20,12 +20,12 @@ public:
 
 	bool operator < (const Vector2D* vector) const
 	{
-		return (x < vector->x);
+		return (x < vector->x && y < vector->y);
 	}
 
 	bool operator >(const Vector2D* vector) const
 	{
-		return (x > vector->x);
+		return (x > vector->x && y > vector->y);
 	}
 
 	bool operator ==(const Vector2D& vector) const
@@ -35,7 +35,6 @@ public:
 		}
 		return false;
 	}
-
 
 	Vector2D operator /(float f) const
 	{
@@ -140,6 +139,69 @@ public:
 		vec.y = y * vector.x + y * vector.y;
 		return vec;
 	}
+
+
+	inline double Length() const
+	{
+		return sqrt(x*x + y*y);
+	}
+
+	inline double LenghtSq() const
+	{
+		return (x*x + y*y);
+	}
+
+	inline double Distance(Vector2D& vector)const
+	{
+		double ySeperation = vector.y - y;
+		double xSeperation = vector.x - x;
+		return sqrt(ySeperation * ySeperation + xSeperation * xSeperation);
+	}
+
+
+	inline double DistanceSq(Vector2D& vector)const
+	{
+		double ySeperation = vector.y - y;
+		double xSeperation = vector.x - x;
+		return ySeperation * ySeperation + xSeperation * xSeperation;
+	}
+
+	inline void Normalize()
+	{
+		double vector_lenght = this->Length();
+
+		if (vector_lenght > std::numeric_limits<double>::epsilon())
+		{
+			this->x /= vector_lenght;
+			this->y /= vector_lenght;
+		}
+	}
+
+	inline Vector2D NormalizeVector(Vector2D &vec)
+	{
+		Vector2D vector = vec;
+		double vector_lenght = vector.Length();
+
+		if (vector_lenght > std::numeric_limits<double>::epsilon())
+		{
+			vector.x /= vector_lenght;
+			vector.y /= vector_lenght;
+		}
+
+		return vec;
+	}
+
+	inline void Trunctate(double max)
+	{
+		if (this->Length() > max)
+		{
+			this->Normalize();
+
+			*this = *this * max;
+		}
+	}
+
+
 
 
 	void print()
