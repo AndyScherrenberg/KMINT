@@ -37,6 +37,63 @@ public:
 	}
 
 
+	Vector2D operator /(float f) const
+	{
+		Vector2D vect;
+		vect.x = this->x / f;
+		vect.y = this->y / f;
+		
+		return vect;
+	}
+
+
+	Vector2D operator /(int f) const
+	{
+		Vector2D vect;
+		vect.x = this->x / f;
+		vect.y = this->y / f;
+
+		return vect;
+	}
+
+
+
+	Vector2D operator /(double f) const
+	{
+		Vector2D vect;
+		vect.x = this->x / f;
+		vect.y = this->y / f;
+
+		return vect;
+	}
+
+
+	Vector2D operator *(double f) const
+	{
+		Vector2D vect;
+		vect.x = this->x / f;
+		vect.y = this->y / f;
+
+		return vect;
+	}
+
+	Vector2D operator *(int f) const
+	{
+		Vector2D vect;
+		vect.x = this->x / f;
+		vect.y = this->y / f;
+
+		return vect;
+	}
+
+	Vector2D operator *(float f) const
+	{
+		Vector2D vect;
+		vect.x = this->x / f;
+		vect.y = this->y / f;
+
+		return vect;
+	}
 
 	Vector2D& Vector2D::operator+=(const Vector2D& vector)
 	{

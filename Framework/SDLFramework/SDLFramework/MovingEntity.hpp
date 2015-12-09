@@ -12,10 +12,14 @@
 #include "IGameObject.h"
 #include <stdio.h>
 #include "Vector2D.h"
+#include "SteeringBehaviors.h"
+
 class MovingEntitiy : public IGameObject{
 protected:
 	int id;
 	
+	SteeringBehaviors* steering;
+
 	Vector2D postion;
 	Vector2D velocity;
 	Vector2D heading;
@@ -29,6 +33,10 @@ public:
 
 	void setId(int id){ this->id = id; }
 	int getId(){ return this->id; }
+
+
+	void setSteering(SteeringBehaviors* steering){ this->steering = steering; }
+	SteeringBehaviors* getSteering(){ return steering; }
 
 	void setPosition(Vector2D& postion){ this->postion = postion; }
 	Vector2D getPostion(){ return this->postion; }
