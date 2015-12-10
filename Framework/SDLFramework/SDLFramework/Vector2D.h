@@ -1,6 +1,9 @@
 #pragma once
 #include <io.h>
 #include <iostream>
+#include <math.h>
+#include <iosfwd>
+#include <limits>
 class Vector2D
 {
 
@@ -76,15 +79,15 @@ public:
 		return vect;
 	}
 
-	Vector2D operator *(int f) const
+	/*Vector2D operator *(int f) const
 	{
 		Vector2D vect;
 		vect.x = this->x / f;
 		vect.y = this->y / f;
 
 		return vect;
-	}
-
+	}*/
+	/*
 	Vector2D operator *(float f) const
 	{
 		Vector2D vect;
@@ -92,7 +95,7 @@ public:
 		vect.y = this->y / f;
 
 		return vect;
-	}
+	}*/
 
 	Vector2D& Vector2D::operator+=(const Vector2D& vector)
 	{
@@ -108,7 +111,32 @@ public:
 		return *this;
 	}
 
+	Vector2D operator *(const Vector2D& vector) const{
+		Vector2D vec;
+		vec.x = x * vector.x + x * vector.y;
+		vec.y = y * vector.x + y * vector.y;
+		return vec;
+	}
 
+	Vector2D operator*(double rhs)
+	{
+		Vector2D result = *this;
+		result *= rhs;
+		return result;
+	}
+
+
+
+
+	const Vector2D& operator*=(const double& rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+
+		return *this;
+	}
+
+	
 	Vector2D& Vector2D::operator*=(const Vector2D& vector)
 	{
 	
@@ -132,13 +160,8 @@ public:
 		vec.y = y - vector.y;
 		return vec;
 	}
+	
 
-	Vector2D operator *(const Vector2D& vector) const{
-		Vector2D vec;
-		vec.x = x * vector.x + x * vector.y;
-		vec.y = y * vector.x + y * vector.y;
-		return vec;
-	}
 
 
 	inline double Length() const

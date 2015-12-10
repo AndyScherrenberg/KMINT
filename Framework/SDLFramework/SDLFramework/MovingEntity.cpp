@@ -9,16 +9,14 @@
 #include "MovingEntity.hpp"
 
 
-void MovingEntitiy::Update(double deltaTime)
+void MovingEntitiy::Update(float deltaTime)
 {
-	Vector2D steeringforce = getSteering()->Calculate();
-
+	Vector2D steeringforce = getSteering()->Calculate(); //Hiet moet nog een goed getal komen : D
+	steeringforce = Vector2D(1, 2);
 	Vector2D acceleration = steeringforce / getMass();
 
 	velocity += acceleration * deltaTime;
 
-	//Hier moeten we trunctate;
-	
 	velocity.Trunctate(maxSpeed);
 
 	postion += velocity * deltaTime;
@@ -27,4 +25,9 @@ void MovingEntitiy::Update(double deltaTime)
 	{
 		heading = velocity.NormalizeVector(velocity);
 	}
+}
+
+void MovingEntitiy::Draw()
+{
+	mApplication->DrawTexture(this->GetTexture(), this->getPostion().getX(), this->getPostion().getY(), 50, 50);
 }

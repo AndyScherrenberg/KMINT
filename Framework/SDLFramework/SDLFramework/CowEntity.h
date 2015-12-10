@@ -7,6 +7,6 @@ class CowEntity : public MovingEntitiy
 public: 
 	CowEntity();
 	~CowEntity();
-	virtual void Update(double deltatime);
+	virtual void Update(float deltatime);
 };
 

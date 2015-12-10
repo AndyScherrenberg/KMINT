@@ -4,7 +4,8 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
-
+#include "CowEntity.h"
+#include "RabbitEntity.h"
 int main()
 {
 
@@ -18,6 +19,11 @@ int main()
 
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
+
+	CowEntity* cow = new  CowEntity();
+	RabbitEntity* rabbit = new RabbitEntity();
+	application->AddRenderable(cow);
+	application->AddRenderable(rabbit);
 
 	while (application->IsRunning())
 	{
@@ -34,14 +40,14 @@ int main()
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
 				case SDLK_SPACE:
-					//map.Update();
+			
 					break;
 				default:
 					break;
 				}
 			}
         }
-       
+		application->UpdateGameObjects();
 		application->RenderGameObjects();
 		application->EndTick();
 

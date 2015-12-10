@@ -29,8 +29,8 @@ protected:
 	float maxForce;
 
 public:
-	virtual void Update(double deltatime);
-
+	virtual void Update(float deltatime);
+	void Draw();
 	void setId(int id){ this->id = id; }
 	int getId(){ return this->id; }
 
