@@ -38,7 +38,7 @@ public:
 	void setSteering(SteeringBehaviors* steering){ this->steering = steering; }
 	SteeringBehaviors* getSteering(){ return steering; }
 
-	void setPosition(Vector2D& postion){ this->postion = postion; }
+	void setPosition(const Vector2D& postion){ this->postion = postion; }
 	Vector2D getPostion(){ return this->postion; }
 
 	void setVelocity(Vector2D& velocity){ this->velocity = velocity; }

@@ -1,13 +1,21 @@
 #include "FWApplication.h"
 #include "Config.h"
 #include "IGameObject.h"
+#ifdef WIN_32
 #include <SDL.h>
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <SDL_events.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
-
+#else
+#include "SDL.h"
+#include "SDL_video.h"
+#include "SDL_render.h"
+#include "SDL_events.h"
+#include "SDL_ttf.h"
+#include "SDL_image.h"
+#endif
 FWApplication * FWApplication::mInstance;
 FWApplication::FWApplication(int offsetX, int offsetY, int width, int height)
 	: mTargetDelayMS(1000 / 60),

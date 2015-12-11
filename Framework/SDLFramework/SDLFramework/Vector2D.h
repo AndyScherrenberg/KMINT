@@ -1,5 +1,5 @@
 #pragma once
-#include <io.h>
+//#include <io.h>
 #include <iostream>
 #include <math.h>
 #include <iosfwd>
@@ -97,14 +97,14 @@ public:
 		return vect;
 	}*/
 
-	Vector2D& Vector2D::operator+=(const Vector2D& vector)
+	Vector2D& operator+=(const Vector2D& vector)
 	{
 		this->x += vector.x;
 		this->y += vector.y;
 		return *this;
 	}
 
-	Vector2D& Vector2D::operator-=(const Vector2D& vector)
+	Vector2D& operator-=(const Vector2D& vector)
 	{
 		this->x -= vector.x;
 		this->y -= vector.y;
@@ -137,7 +137,7 @@ public:
 	}
 
 	
-	Vector2D& Vector2D::operator*=(const Vector2D& vector)
+	Vector2D& operator*=(const Vector2D& vector)
 	{
 	
 		this->x = x * vector.x + x * vector.y;

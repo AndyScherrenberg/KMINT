@@ -1,7 +1,11 @@
 #include <iostream>
 #include "Config.h"
 #include "FWApplication.h"
+#ifdef WIN_32
 #include <SDL_events.h>
+#else
+#include "SDL_events.h"
+#endif
 #include "SDL_timer.h"
 #include <time.h>
 #include "CowEntity.h"

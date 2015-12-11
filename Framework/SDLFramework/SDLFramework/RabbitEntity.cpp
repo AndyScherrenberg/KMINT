@@ -4,7 +4,7 @@
 RabbitEntity::RabbitEntity()
 {
 #ifdef __APPLE__
-	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/haas.png"));
+	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINT/KMINT/Framework/SDLFramework/Resources/haas.png"));
 #else
 	this->SetTexture(mApplication->LoadTexture("haas.png"));
 #endif

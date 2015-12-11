@@ -4,7 +4,7 @@
 CowEntity::CowEntity()
 {
 #ifdef __APPLE__
-	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINTMac/KMINT/Framework/SDLFramework/Resources/cow-2.png"));
+	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINT/KMINT/Framework/SDLFramework/Resources/cow-2.png"));
 #else
 	this->SetTexture(mApplication->LoadTexture("cow-2.png"));
 #endif
