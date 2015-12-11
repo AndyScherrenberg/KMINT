@@ -40,12 +40,20 @@ protected:
 	//3 Flee
 
 public:
+    
     MovingEntity(GameWorld* gameworld);
     ~MovingEntity();
-	virtual void Update(float deltatime);
+
+    const double PanicDistanceSq = 100.0 * 100.0;
+    const double safeDistanceSq = 200.0 * 200.0;
+    
+    
+    virtual void Update(float deltatime);
 	void Draw();
 	void setId(int id){ this->id = id; }
 	int getId(){ return this->id; }
+    
+    
 
 	double getSpeed()const{ return velocity.Length(); }
 	void setSteering(SteeringBehaviors* steering){ this->steering = steering; }
