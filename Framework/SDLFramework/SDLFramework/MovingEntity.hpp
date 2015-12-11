@@ -14,12 +14,14 @@
 #include "Vector2D.h"
 
 class SteeringBehaviors;
+class GameWorld;
 
-class MovingEntitiy : public IGameObject{
+class MovingEntity : public IGameObject{
 protected:
 	int id;
 	
 	SteeringBehaviors* steering;
+    GameWorld* gameWorld;
 
 	Vector2D postion;
 	Vector2D velocity;
@@ -30,7 +32,7 @@ protected:
 	float maxSpeed;
 	float maxForce;
 
-	MovingEntitiy* target;
+	MovingEntity* target;
 
 	int stateId = 0; 
 	//1 Pursuit
@@ -38,6 +40,8 @@ protected:
 	//3 Flee
 
 public:
+    MovingEntity(GameWorld* gameworld);
+    ~MovingEntity();
 	virtual void Update(float deltatime);
 	void Draw();
 	void setId(int id){ this->id = id; }
@@ -65,11 +69,15 @@ public:
 	void setMaxSpeed(float maxSpeed){ this->maxSpeed = maxSpeed; }
 	float getMaxSpeed(){ return this->maxSpeed; }
 
-	void SetTarget(MovingEntitiy* entity){ this->target = entity; };
-		MovingEntitiy* getTarget(){ return target; }
+	void SetTarget(MovingEntity* entity){ this->target = entity; };
+		MovingEntity* getTarget(){ return target; }
 
-		void setStateid(int stateId){ this->stateId = stateId; }
-		int getStateId(){ return this->stateId; }
+    void setStateid(int stateId){ this->stateId = stateId; }
+    int getStateId(){ return this->stateId; }
+    
+    FWApplication* getApplication(){
+        return this->mApplication;
+    }
 };
 
 #endif /* MovingEntity_hpp */

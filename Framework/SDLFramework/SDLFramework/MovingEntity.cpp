@@ -7,11 +7,18 @@
 //
 
 #include "MovingEntity.hpp"
+#include "GameWorld.hpp"
 #include "SteeringBehaviors.h"
 
+MovingEntity::MovingEntity(GameWorld* gameworld){
+    this->gameWorld = gameworld;
+}
+MovingEntity::~MovingEntity(){
+    
+}
 
 
-void MovingEntitiy::Update(float deltaTime)
+void MovingEntity::Update(float deltaTime)
 {
 	Vector2D steeringforce = getSteering()->Calculate(); //Hiet moet nog een goed getal komen : D
 
@@ -30,11 +37,14 @@ void MovingEntitiy::Update(float deltaTime)
 		side  = heading.Perp();
 	}
 
-	
-	//WrapAround(this->postion, SDL_GetWindowSurface(this->mApplication->GetWindow())->w, SDL_GetWindowSurface(this->mApplication->GetWindow())->h);	
+	if(getSteering()->EntityIsInSpace())
+    {
+        this->gameWorld->UpdateEntity(this);
+    }
+	//WrapAround(this->postion, SDL_GetWindowSurface(this->mApplication->GetWindow())->w, SDL_GetWindowSurface(this->mApplication->GetWindow())->h);
 }
 
-void MovingEntitiy::Draw()
+void MovingEntity::Draw()
 {
 	mApplication->DrawTexture(this->GetTexture(), this->getPostion().getX(), this->getPostion().getY(), 50, 50);
 }

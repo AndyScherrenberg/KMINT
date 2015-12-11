@@ -1,12 +1,12 @@
 #pragma once
 #include "MovingEntity.hpp"
 
+class GameWorld;
 
-
-class RabbitEntity : public MovingEntitiy
+class RabbitEntity : public MovingEntity
 {
 public:
-	RabbitEntity();
+	RabbitEntity(GameWorld* world);
 	~RabbitEntity();
 	virtual void Update(double deltatime);
 };

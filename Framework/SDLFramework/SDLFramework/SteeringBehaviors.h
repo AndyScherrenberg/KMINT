@@ -2,14 +2,14 @@
 #include "Vector2D.h"
 
 
-class MovingEntitiy;
+class MovingEntity;
 class SteeringBehaviors
 {
 private:
-    MovingEntitiy* owner;
+    MovingEntity* owner;
 
 public:
-	SteeringBehaviors(MovingEntitiy* owner){
+	SteeringBehaviors(MovingEntity* owner){
 		this->owner = owner;
 	}
 	~SteeringBehaviors();

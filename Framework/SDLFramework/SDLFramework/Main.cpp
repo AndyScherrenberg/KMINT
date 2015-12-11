@@ -11,6 +11,8 @@
 #include "CowEntity.h"
 #include "RabbitEntity.h"
 #include "SteeringBehaviors.h"
+#include "GameWorld.hpp"
+
 int main()
 {
 
@@ -24,9 +26,12 @@ int main()
 
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
+    
+    GameWorld* world = new GameWorld();
 
-	CowEntity* cow = new  CowEntity();
-	RabbitEntity* rabbit = new RabbitEntity();
+	CowEntity* cow = new  CowEntity(world,application);
+	RabbitEntity* rabbit = new RabbitEntity(world,application);
+    
 	application->AddRenderable(cow);
 	application->AddRenderable(rabbit);
 

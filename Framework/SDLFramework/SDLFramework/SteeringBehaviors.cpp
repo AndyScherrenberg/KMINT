@@ -1,6 +1,7 @@
 #include "SteeringBehaviors.h"
 #include "MovingEntity.hpp"
 #include "CowEntity.h"
+#include "SDL.h"
 
 SteeringBehaviors::~SteeringBehaviors()
 {
@@ -27,8 +28,6 @@ Vector2D SteeringBehaviors::Calculate()
 
 	Vector2D vector{ 1, 1 };
 	return vector;
-
-
 }
 
 Vector2D SteeringBehaviors::Seek( const Vector2D& TargetPos)
@@ -66,8 +65,18 @@ Vector2D SteeringBehaviors::Flee()
 }
 
 bool SteeringBehaviors::EntityIsInSpace(){
+    float xCor = owner->getPostion().getX();
+    float yCor = owner->getPostion().getY();
+    int screenX = SDL_GetWindowSurface(owner->getApplication()->GetWindow())->w;
+    int screenY = SDL_GetWindowSurface(owner->getApplication()->GetWindow())->h;
+    
+    if(xCor > screenX + 50 || xCor < -50 || yCor > screenY + 50 || yCor < -50){
+        return true;
+    }
+   
     return false;
 }
+
 Vector2D SteeringBehaviors::Wander()
 {
 	return Vector2D{ 1, 1 };

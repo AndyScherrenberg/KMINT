@@ -1,7 +1,7 @@
 #include "RabbitEntity.h"
 
 
-RabbitEntity::RabbitEntity()
+RabbitEntity::RabbitEntity(GameWorld* world):MovingEntity(world)
 {
 #ifdef __APPLE__
 	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINT/KMINT/Framework/SDLFramework/Resources/haas.png"));

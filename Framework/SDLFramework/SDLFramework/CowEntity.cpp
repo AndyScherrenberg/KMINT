@@ -1,7 +1,7 @@
 #include "CowEntity.h"
 
 
-CowEntity::CowEntity()
+CowEntity::CowEntity(GameWorld* world):MovingEntity(world)
 {
 #ifdef __APPLE__
 	this->SetTexture(mApplication->LoadTexture("/Users/bryansijs/Documents/C++/KMINT/KMINT/Framework/SDLFramework/Resources/cow-2.png"));
@@ -20,5 +20,5 @@ CowEntity::~CowEntity()
 
 void CowEntity::Update(float deltaTime)
 {
-	MovingEntitiy::Update(deltaTime);
+	MovingEntity::Update(deltaTime);
 }

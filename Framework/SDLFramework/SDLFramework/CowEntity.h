@@ -1,11 +1,11 @@
 #pragma once
 #include "MovingEntity.hpp"
 
-
-class CowEntity : public MovingEntitiy
+class GameWorld;
+class CowEntity : public MovingEntity
 {
 public: 
-	CowEntity();
+	CowEntity(GameWorld* world);
 	~CowEntity();
 	virtual void Update(float deltatime);
 };
