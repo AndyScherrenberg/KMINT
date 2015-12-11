@@ -35,7 +35,7 @@ Vector2D SteeringBehaviors::Calculate()
 
 }
 
-Vector2D SteeringBehaviors::Seek(Vector2D& TargetPos)
+Vector2D SteeringBehaviors::Seek( const Vector2D& TargetPos)
 {
 
 	Vector2D DesiredVelocity= NormalizeVector(TargetPos - owner->getPostion())
@@ -68,8 +68,9 @@ Vector2D SteeringBehaviors::Flee()
 	return Vector2D{ 1, 1 };
 }
 
-
-
+bool SteeringBehaviors::EntityIsInSpace(){
+    return false;
+}
 Vector2D SteeringBehaviors::Wander()
 {
 	double JitterThisTimeSlice = m_dWanderJitter * owner->TimeElapsed();

@@ -201,7 +201,6 @@ public:
 		}
 	}
 
-	
 
 	inline Vector2D Perp()const
 	{
