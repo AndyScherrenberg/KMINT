@@ -33,7 +33,7 @@ protected:
 	float maxForce;
 
 	MovingEntity* target;
-
+	double                m_dTimeElapsed;
 	int stateId = 0; 
 	//1 Pursuit
 	//2 Wander
@@ -80,6 +80,8 @@ public:
     FWApplication* getApplication(){
         return this->mApplication;
     }
+
+    double       TimeElapsed()const{ return m_dTimeElapsed; }
 };
 
 #endif /* MovingEntity_hpp */

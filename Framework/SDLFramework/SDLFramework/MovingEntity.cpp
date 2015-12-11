@@ -9,6 +9,7 @@
 #include "MovingEntity.hpp"
 #include "GameWorld.hpp"
 #include "SteeringBehaviors.h"
+//#include <SDL.h>
 
 MovingEntity::MovingEntity(GameWorld* gameworld){
     this->gameWorld = gameworld;
@@ -16,7 +17,6 @@ MovingEntity::MovingEntity(GameWorld* gameworld){
 MovingEntity::~MovingEntity(){
     
 }
-
 
 void MovingEntity::Update(float deltaTime)
 {

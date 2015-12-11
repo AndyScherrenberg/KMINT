@@ -1,7 +1,8 @@
 #pragma once
 #include "Vector2D.h"
-
-
+#include "Utils.h"
+#include "Transformations.h"
+#include <math.h>
 class MovingEntity;
 class SteeringBehaviors
 {
