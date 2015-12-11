@@ -11,12 +11,17 @@
 
 #include <stdio.h>
 #include "MovingEntity.hpp"
+#include "CowEntity.h"
 
 class GameWorld{
+    std::vector<CowEntity*> cowList;
     
 public:
     GameWorld();
     ~GameWorld();
     void UpdateEntity(MovingEntity* entity);
+    void setCowList(std::vector<CowEntity*> cowList){this->cowList = cowList;};
+    std::vector<CowEntity*> getCowList(){return this->cowList;};
+    void addCowToCowList(CowEntity* cow){this->cowList.push_back(cow);};
 };
 #endif /* GameWorld_hpp */
