@@ -41,3 +41,4 @@ void MovingEntitiy::Draw()
 {
 	mApplication->DrawTexture(this->GetTexture(), this->getPostion().getX(), this->getPostion().getY(), 50, 50);
 }
+

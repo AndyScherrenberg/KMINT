@@ -29,6 +29,8 @@ protected:
 	float maxSpeed;
 	float maxForce;
 
+	MovingEntitiy* target;
+
 public:
 	virtual void Update(float deltatime);
 	void Draw();
@@ -56,6 +58,9 @@ public:
 
 	void setMaxSpeed(float maxSpeed){ this->maxSpeed = maxSpeed; }
 	float getMaxSpeed(){ return this->maxSpeed; }
+
+	void SetTarget(MovingEntitiy* entity){ this->target = entity; };
+		MovingEntitiy* getTarget(){ return target; }
 };
 
 #endif /* MovingEntity_hpp */
