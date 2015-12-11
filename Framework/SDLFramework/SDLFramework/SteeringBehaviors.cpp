@@ -24,7 +24,7 @@ Vector2D SteeringBehaviors::Calculate()
 		return this->Wander();
 		break;
 	case 3:
-		//return this->Flee();
+		return this->Flee();
 		break;
 	default:
 		break;
@@ -36,11 +36,8 @@ Vector2D SteeringBehaviors::Calculate()
 
 Vector2D SteeringBehaviors::Seek( const Vector2D& TargetPos)
 {
-
-	Vector2D DesiredVelocity= NormalizeVector(TargetPos - owner->getPostion())
-		* owner->getMaxSpeed();
+    Vector2D DesiredVelocity = NormalizeVector(TargetPos - owner->getPostion()) * owner->getMaxSpeed();
 	return (DesiredVelocity - owner->getVelocity());
-
 }
 
 Vector2D SteeringBehaviors::Pursuit()
@@ -64,7 +61,21 @@ Vector2D SteeringBehaviors::Pursuit()
 
 Vector2D SteeringBehaviors::Flee()
 {
-	return Vector2D{ 1, 1 };
+    owner->setMaxSpeed(125);
+    Vector2D TargetPos = owner->getTarget()->getPostion();
+    //only flee if the target is within 'panic distance'. Work in distance //squared space.
+    const double PanicDistanceSq = 100.0 * 100.0;
+    
+    if (owner->getPostion().DistanceSq(TargetPos) > PanicDistanceSq)
+    {
+        // safe
+        owner->setMaxSpeed(75);
+        owner->setStateid(2);
+        return Vector2D(0,0);
+    }
+    //in danger
+    Vector2D DesiredVelocity = NormalizeVector(owner->getPostion() - TargetPos) * (owner->getMaxSpeed());
+    return (DesiredVelocity - owner->getVelocity());
 }
 
 bool SteeringBehaviors::EntityIsInSpace(){
@@ -82,17 +93,18 @@ bool SteeringBehaviors::EntityIsInSpace(){
 
 Vector2D SteeringBehaviors::Wander()
 {
-	double JitterThisTimeSlice = m_dWanderJitter * owner->TimeElapsed();
-
-
+    const double PanicDistanceSq = 100.0 * 100.0;
+    Vector2D TargetPos = owner->getTarget()->getPostion();
+    if (owner->getPostion().DistanceSq(TargetPos) < PanicDistanceSq)
+    {
+        //in danger
+        owner->setStateid(3);
+    }
 	m_vWanderTarget += Vector2D(RandomClamped() * m_dWanderJitter,
 		RandomClamped() * m_dWanderJitter);
 
 
 	//reproject this new vector back on to a unit circle
-//
-
-	
 	m_vWanderTarget = NormalizeVector(m_vWanderTarget);
 
 	//increase the length of the vector to the same as the radius

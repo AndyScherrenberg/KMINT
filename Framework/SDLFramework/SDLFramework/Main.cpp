@@ -40,7 +40,7 @@ int main()
 
 	cow->setSteering(new SteeringBehaviors{ cow });
 	cow->setStateid(1);
-	rabbit->setStateid(2);
+	rabbit->setStateid(3);
 	rabbit->setSteering(new SteeringBehaviors{ rabbit });
 	while (application->IsRunning())
 	{

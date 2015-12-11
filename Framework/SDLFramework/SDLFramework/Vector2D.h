@@ -154,7 +154,7 @@ public:
 		vec.y = y + vector.y;
 		return vec;
 	}
-	Vector2D operator -(const Vector2D& vector) const
+	Vector2D operator - (const Vector2D& vector) const
 	{
 		Vector2D vec;
 		vec.x = x - vector.x;
@@ -183,7 +183,7 @@ public:
 	}
 
 
-	inline double DistanceSq(Vector2D& vector)const
+	inline double DistanceSq(const Vector2D& vector)const
 	{
 		double ySeperation = vector.y - y;
 		double xSeperation = vector.x - x;
@@ -232,7 +232,7 @@ public:
 	}
 };
 
-inline Vector2D NormalizeVector(Vector2D &vec)
+inline Vector2D NormalizeVector(const Vector2D &vec)
 {
 	Vector2D vector = vec;
 	double vector_lenght = vector.Length();
