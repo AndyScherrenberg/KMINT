@@ -7,6 +7,8 @@
 //
 
 #include "MovingEntity.hpp"
+#include <SDL_video.h>
+#include <SDL_render.h>
 
 
 void MovingEntitiy::Update(float deltaTime)
@@ -24,7 +26,16 @@ void MovingEntitiy::Update(float deltaTime)
 	if (velocity.LenghtSq() > 0.00000001)
 	{
 		heading = velocity.NormalizeVector(velocity);
+		
+		side  = heading.Perp();
 	}
+
+	
+	//WrapAround(this->postion, SDL_GetWindowSurface(this->mApplication->GetWindow())->w, SDL_GetWindowSurface(this->mApplication->GetWindow())->h);
+	
+
+
+	
 }
 
 void MovingEntitiy::Draw()
