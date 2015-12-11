@@ -31,3 +31,7 @@ Vector2D SteeringBehaviors::Wander(Vector2D& vector)
 {
 	return vector;
 }
+
+bool SteeringBehaviors::EntityIsInSpace(){
+    return false;
+}
