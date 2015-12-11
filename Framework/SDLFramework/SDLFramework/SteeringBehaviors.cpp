@@ -83,7 +83,7 @@ bool SteeringBehaviors::EntityIsInSpace(){
     int screenX = 800;
     int screenY = 600;
     
-    if(xCor > screenX + 50 || xCor < -50 || yCor > screenY + 50 || yCor < -50){
+    if(xCor > screenX + 25 || xCor < -25 || yCor > screenY + 25 || yCor < -25){
         return true;
     }
    
