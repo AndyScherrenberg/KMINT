@@ -214,6 +214,13 @@ public:
 		return vec;
 	}
 
+	inline Vector2D Perp()const
+	{
+		return Vector2D(-y, x);
+	}
+
+
+
 	inline void Trunctate(double max)
 	{
 		if (this->Length() > max)

@@ -24,6 +24,8 @@ void MovingEntitiy::Update(float deltaTime)
 	if (velocity.LenghtSq() > 0.00000001)
 	{
 		heading = velocity.NormalizeVector(velocity);
+		
+		side  = heading.Perp();
 	}
 }
 

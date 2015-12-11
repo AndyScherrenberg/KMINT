@@ -23,6 +23,7 @@ protected:
 	Vector2D postion;
 	Vector2D velocity;
 	Vector2D heading;
+	Vector2D side;
 
 	float mass;
 	float maxSpeed;
