@@ -6,7 +6,7 @@ class CowEntity : public MovingEntity
 {
 public: 
 
-	const double keepClose = 50.0 * 50.0;
+	//const double keepClose = 50.0 * 50.0;
 
 
 	CowEntity(GameWorld* world);

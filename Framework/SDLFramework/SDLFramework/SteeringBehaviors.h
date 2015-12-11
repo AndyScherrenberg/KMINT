@@ -48,7 +48,8 @@ public:
 	Vector2D Wander();
 	Vector2D NotCollide();
 	Vector2D KeepClose();
-
+	Vector2D Separation();
+	Vector2D Cohesion();
     bool EntityIsInSpace();
 };
 

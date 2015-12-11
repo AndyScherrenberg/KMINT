@@ -28,19 +28,32 @@ int main()
 	application->SetColor(Color(255, 10, 40, 255));
     
     GameWorld* world = new GameWorld();
+	RabbitEntity* rabbit = new RabbitEntity(world);
 
 	CowEntity* cow = new  CowEntity(world);
-    world->addCowToCowList(cow);
-	RabbitEntity* rabbit = new RabbitEntity(world);
-    
-	application->AddRenderable(cow);
+	CowEntity* cow2= new  CowEntity(world);
+	CowEntity* cow3 = new  CowEntity(world);
+	CowEntity* cow4 = new  CowEntity(world);
+	CowEntity* cow5 = new  CowEntity(world);
+	CowEntity* cow6 = new  CowEntity(world);
+	CowEntity* cow7= new  CowEntity(world);
+	CowEntity* cow8 = new  CowEntity(world);
+	CowEntity* cow9 = new  CowEntity(world);
+	CowEntity* cow10 = new  CowEntity(world);
+	cow->setPosition(Vector2D(50, 50));
+	cow2->setPosition(Vector2D(200, 50));
+	cow3->setPosition(Vector2D(50, 300));
+	cow4->setPosition(Vector2D(400, 300));
+	cow5->setPosition(Vector2D(600, 600));
+	cow6->setPosition(Vector2D(150, 350));
+	cow7->setPosition(Vector2D(250, 550));
+	cow8->setPosition(Vector2D(230, 90));
+	cow9->setPosition(Vector2D(487, 98));
+	cow10->setPosition(Vector2D(600, 259));
+
 	application->AddRenderable(rabbit);
 
-	cow->SetTarget(rabbit);
-	rabbit->SetTarget(cow);
-
-	cow->setSteering(new SteeringBehaviors{ cow });
-	cow->setStateid(1);
+	//rabbit->SetTarget(cow);
 	rabbit->setStateid(3);
 	rabbit->setSteering(new SteeringBehaviors{ rabbit });
 	while (application->IsRunning())

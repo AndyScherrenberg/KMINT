@@ -19,7 +19,7 @@ class GameWorld;
 class MovingEntity : public IGameObject{
 protected:
 	int id;
-	
+	bool isTagged = false;
 	SteeringBehaviors* steering;
     GameWorld* gameWorld;
 
@@ -91,6 +91,19 @@ public:
 
     double       TimeElapsed()const{ return m_dTimeElapsed; }
     MovingEntity* getClosestTarget();
+
+	GameWorld* getWorld(){ return this->gameWorld; }
+
+	void TagNeighbors(double radius);
+	void Tag(){ this->isTagged = true; }
+	void UnTag(){ this->isTagged = false; }
+	bool getTagged(){ return this->isTagged; }
+
+	double getBRadius(){
+		return 200*200;
+	}
+
+	void EnforceNonPenetrationConstraint();
 };
 
 #endif /* MovingEntity_hpp */

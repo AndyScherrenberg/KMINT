@@ -1,5 +1,5 @@
 #include "RabbitEntity.h"
-
+#include "GameWorld.hpp"
 
 RabbitEntity::RabbitEntity(GameWorld* world):MovingEntity(world)
 {
@@ -11,6 +11,7 @@ RabbitEntity::RabbitEntity(GameWorld* world):MovingEntity(world)
 	this->setPosition(Vector2D{ 300, 300 });
 	this->setMaxSpeed(100);
 	this->setMass(.05f);
+	world->setRabbit(this);
 }
 
 

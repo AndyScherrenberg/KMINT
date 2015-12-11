@@ -2,7 +2,7 @@
 #include "MovingEntity.hpp"
 #include "CowEntity.h"
 #include "SDL.h"
-
+#include "GameWorld.hpp"
 SteeringBehaviors::~SteeringBehaviors()
 {
 
@@ -14,11 +14,18 @@ Vector2D SteeringBehaviors::Calculate()
 
 	switch ( owner->getStateId())
 	{
-	case 1:
-		return this->Pursuit(); 
+	case 1:{
+		Vector2D vec{ 0, 0 };
+		vec += this->Pursuit() * 3;
+		vec += this->Cohesion() * 0.3;
+		vec += this->Separation() * 4;
+		vec.Trunctate(20);
+		 return vec;
+	}
 		break;
 	case 2:
 		return this->Wander();
+
 		break;
 	case 3:
 		return this->Flee();
@@ -89,7 +96,7 @@ bool SteeringBehaviors::EntityIsInSpace(){
 
 Vector2D SteeringBehaviors::Wander()
 {
-    
+	
     Vector2D TargetPos = owner->getClosestTarget()->getPostion();
     if (owner->getPostion().DistanceSq(TargetPos) < owner->PanicDistanceSq)
     {
@@ -98,7 +105,7 @@ Vector2D SteeringBehaviors::Wander()
     }
 	m_vWanderTarget += Vector2D(RandomClamped() * m_dWanderJitter,
 		RandomClamped() * m_dWanderJitter);
-
+	
 
 	//reproject this new vector back on to a unit circle
 	m_vWanderTarget = NormalizeVector(m_vWanderTarget);
@@ -123,9 +130,52 @@ Vector2D SteeringBehaviors::Wander()
 
 
 
-Vector2D SteeringBehaviors::KeepClose()
+Vector2D SteeringBehaviors::Separation()
 {
+	std::vector<CowEntity*> cows = owner->getWorld()->getCowList();
+
+	Vector2D SteeringForce{ 0, 0};
+	for (int a = 0; a<cows.size(); ++a)
+	{
+		//make sure this agent isn't included in the calculations and that
+		//the agent being examined is close enough.
+		if ((cows[a] != owner) && cows[a]->getTagged())
+		{
+			Vector2D ToAgent = owner->getPostion() - cows[a]->getPostion();
+
+			if (ToAgent.y  > 30 && ToAgent.x > 30)
+			//scale the force inversely proportional to the agent's distance
+			//from its neighbor.
+			SteeringForce += NormalizeVector(ToAgent) / ToAgent.Length();
+		}
+	}
+	return SteeringForce;
+}
 
 
-	return Vector2D(1, 1);
+Vector2D SteeringBehaviors::Cohesion()
+{
+	std::vector<CowEntity*> cows = owner->getWorld()->getCowList();
+	//first find the center of mass of all the agents
+	Vector2D CenterOfMass{ 0,0 }, SteeringForce{ 0,0 };
+	int NeighborCount = 0;
+	//iterate through the neighbors and sum up all the position vectors
+	for (int a = 0; a<cows.size(); ++a)
+	{
+		//make sure *this* agent isn't included in the calculations and that
+		//the agent being examined is a neighbor
+		if ((cows[a] != owner) && cows[a]->getTagged())
+		{
+			CenterOfMass += cows[a]->getPostion();
+			++NeighborCount;
+		}
+	}
+	if (NeighborCount > 0)
+	{
+		//the center of mass is the average of the sum of positions
+		CenterOfMass /= (double)NeighborCount;
+		//now seek toward that position
+		SteeringForce = Seek(CenterOfMass);
+	}
+	return SteeringForce;
 }

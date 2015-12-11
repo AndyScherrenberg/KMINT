@@ -207,7 +207,13 @@ public:
 		return Vector2D(-y, x);
 	}
 
+	const Vector2D& operator/=(const double& rhs)
+	{
+		x /= rhs;
+		y /= rhs;
 
+		return *this;
+	}
 
 	inline void Trunctate(double max)
 	{
@@ -222,6 +228,11 @@ public:
 	inline double Dot(const Vector2D &v2)const
 	{
 		return x*v2.x + y*v2.y;
+	}
+
+	inline double LengthSq()const
+	{
+		return (x * x + y * y);
 	}
 
 
@@ -245,3 +256,5 @@ inline Vector2D NormalizeVector(const Vector2D &vec)
 
 	return vector;
 }
+
+
