@@ -90,6 +90,7 @@ public:
     }
 
     double       TimeElapsed()const{ return m_dTimeElapsed; }
+    MovingEntity* getClosestTarget();
 };
 
 #endif /* MovingEntity_hpp */

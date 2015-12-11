@@ -59,7 +59,7 @@ Vector2D SteeringBehaviors::Pursuit()
 Vector2D SteeringBehaviors::Flee()
 {
     owner->setMaxSpeed(125);
-    Vector2D TargetPos = owner->getTarget()->getPostion();
+    Vector2D TargetPos = owner->getClosestTarget()->getPostion();
     //only flee if the target is within 'panic distance'. Work in distance //squared space.
     
     if (owner->getPostion().DistanceSq(TargetPos) > owner->safeDistanceSq)
@@ -89,7 +89,8 @@ bool SteeringBehaviors::EntityIsInSpace(){
 
 Vector2D SteeringBehaviors::Wander()
 {
-    Vector2D TargetPos = owner->getTarget()->getPostion();
+    
+    Vector2D TargetPos = owner->getClosestTarget()->getPostion();
     if (owner->getPostion().DistanceSq(TargetPos) < owner->PanicDistanceSq)
     {
         //in danger

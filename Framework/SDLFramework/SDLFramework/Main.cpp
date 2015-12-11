@@ -30,6 +30,7 @@ int main()
     GameWorld* world = new GameWorld();
 
 	CowEntity* cow = new  CowEntity(world);
+    world->addCowToCowList(cow);
 	RabbitEntity* rabbit = new RabbitEntity(world);
     
 	application->AddRenderable(cow);

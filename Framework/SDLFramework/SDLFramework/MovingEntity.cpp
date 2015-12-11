@@ -51,3 +51,16 @@ void MovingEntity::Draw()
 	mApplication->DrawTexture(this->GetTexture(), this->getPostion().getX(), this->getPostion().getY(), 50, 50);
 }
 
+MovingEntity* MovingEntity::getClosestTarget(){
+    for(std::vector<CowEntity*>::iterator it = gameWorld->getCowList().begin(); it != gameWorld->getCowList().end(); ++it){
+        /* std::cout << *it; ... */
+        if(this->target == nullptr){
+            this->target = (*it);
+        }
+        else if(getPostion().DistanceSq((*it)->getPostion()) < getPostion().DistanceSq(target->getPostion())){
+            this->target = (*it);
+        }
+    }
+    return this->target;
+}
+
