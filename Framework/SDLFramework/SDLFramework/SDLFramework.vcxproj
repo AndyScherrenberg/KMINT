@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClCompile Include="CowEntity.cpp" />
     <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
     <ClCompile Include="RabbitEntity.cpp" />
@@ -98,6 +99,9 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="CowEntity.h" />
     <ClInclude Include="C2DMatrix.h" />
+    <ClInclude Include="FWApplication.h" />
+    <ClInclude Include="GameWorld.hpp" />
+    <ClInclude Include="IGameObject.h" />
     <ClInclude Include="MovingEntity.hpp" />
     <ClInclude Include="RabbitEntity.h" />
     <ClInclude Include="SteeringBehaviors.h" />
