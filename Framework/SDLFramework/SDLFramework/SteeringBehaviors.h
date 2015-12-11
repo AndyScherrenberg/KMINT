@@ -1,10 +1,17 @@
 #pragma once
 #include "Vector2D.h"
 
+
+class MovingEntitiy;
 class SteeringBehaviors
 {
+private:
+	MovingEntitiy* owner;
+
 public:
-	SteeringBehaviors();
+	SteeringBehaviors(MovingEntitiy* owner){
+		this->owner = owner;
+	}
 	~SteeringBehaviors();
 
 	Vector2D Calculate();

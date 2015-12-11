@@ -9,6 +9,18 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{255b479b-c916-499c-a9f9-61819c91f56a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Steering">
+      <UniqueIdentifier>{68c331ee-b897-4aae-8b11-a0371ec86c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{cb362781-effe-4c4c-9932-b37a5dbc0f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Steering">
+      <UniqueIdentifier>{ec9d984a-a79a-4794-b234-a6f2c3eadf07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -17,17 +29,17 @@
     <ClCompile Include="FWApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovingEntity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CowEntity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingEntity.cpp">
+      <Filter>Source Files\Entity</Filter>
     </ClCompile>
     <ClCompile Include="RabbitEntity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entity</Filter>
     </ClCompile>
     <ClCompile Include="SteeringBehaviors.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Steering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -37,20 +49,20 @@
     <ClInclude Include="Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MovingEntity.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SteeringBehaviors.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
     <ClInclude Include="CowEntity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingEntity.hpp">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
     <ClInclude Include="RabbitEntity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SteeringBehaviors.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

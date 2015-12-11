@@ -7,19 +7,20 @@
 //
 
 #include "MovingEntity.hpp"
+#include "SteeringBehaviors.h"
 
 
 
 void MovingEntitiy::Update(float deltaTime)
 {
 	Vector2D steeringforce = getSteering()->Calculate(); //Hiet moet nog een goed getal komen : D
-	steeringforce = Vector2D(1, 2);
+
 	Vector2D acceleration = steeringforce / getMass();
 
 	velocity += acceleration * deltaTime;
 
 	velocity.Trunctate(maxSpeed);
-
+	
 	postion += velocity * deltaTime;
 
 	if (velocity.LenghtSq() > 0.00000001)
@@ -30,11 +31,7 @@ void MovingEntitiy::Update(float deltaTime)
 	}
 
 	
-	//WrapAround(this->postion, SDL_GetWindowSurface(this->mApplication->GetWindow())->w, SDL_GetWindowSurface(this->mApplication->GetWindow())->h);
-	
-
-
-	
+	//WrapAround(this->postion, SDL_GetWindowSurface(this->mApplication->GetWindow())->w, SDL_GetWindowSurface(this->mApplication->GetWindow())->h);	
 }
 
 void MovingEntitiy::Draw()
