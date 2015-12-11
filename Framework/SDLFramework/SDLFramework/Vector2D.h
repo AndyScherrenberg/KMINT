@@ -200,7 +200,7 @@ public:
 		}
 	}
 
-	inline Vector2D NormalizeVector(Vector2D &vec)
+	inline Vector2D NormalizeVector(const Vector2D &vec)
 	{
 		Vector2D vector = vec;
 		double vector_lenght = vector.Length();

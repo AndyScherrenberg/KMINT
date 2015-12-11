@@ -31,7 +31,7 @@ Vector2D SteeringBehaviors::Calculate()
 
 }
 
-Vector2D SteeringBehaviors::Seek(Vector2D& TargetPos)
+Vector2D SteeringBehaviors::Seek( const Vector2D& TargetPos)
 {
 
 	Vector2D DesiredVelocity; 
@@ -62,9 +62,13 @@ Vector2D SteeringBehaviors::Pursuit()
 
 Vector2D SteeringBehaviors::Flee()
 {
-	return vector;
+	return Vector2D{ 1, 1 };
 }
 
 bool SteeringBehaviors::EntityIsInSpace(){
     return false;
+}
+Vector2D SteeringBehaviors::Wander()
+{
+	return Vector2D{ 1, 1 };
 }
