@@ -64,5 +64,14 @@
     <ClInclude Include="RabbitEntity.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2DMatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

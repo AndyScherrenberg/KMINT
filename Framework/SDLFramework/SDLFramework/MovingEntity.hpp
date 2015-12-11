@@ -31,7 +31,7 @@ protected:
 	float maxForce;
 
 	MovingEntitiy* target;
-
+	double                m_dTimeElapsed;
 	int stateId = 0; 
 	//1 Pursuit
 	//2 Wander
@@ -56,6 +56,8 @@ public:
 	void setHeading(Vector2D& heading){ this->heading = heading; }
 	Vector2D getHeading(){ return this->heading; }
 
+
+	Vector2D getSide(){ return this->side; }
 	void setMass(float mass){ this->mass = mass; }
 	float getMass(){ return this->mass; }
 
@@ -70,6 +72,8 @@ public:
 
 		void setStateid(int stateId){ this->stateId = stateId; }
 		int getStateId(){ return this->stateId; }
+
+		double       TimeElapsed()const{ return m_dTimeElapsed; }
 };
 
 #endif /* MovingEntity_hpp */
