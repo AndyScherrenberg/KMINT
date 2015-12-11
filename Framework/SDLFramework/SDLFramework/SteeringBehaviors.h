@@ -8,6 +8,8 @@ class SteeringBehaviors
 {
 private:
     MovingEntity* owner;
+    
+    const double PanicDistanceSq = 100.0 * 100.0;
 
 	//the current position on the wander circle the agent is
 	//attempting to steer towards
