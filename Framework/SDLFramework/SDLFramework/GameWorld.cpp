@@ -17,14 +17,13 @@ GameWorld::~GameWorld(){
 }
 
 void GameWorld::UpdateEntity(MovingEntity* entity){
+    
     float xCor = entity->getPostion().getX();
     float yCor = entity->getPostion().getY();
-    int screenX = SDL_GetWindowSurface(entity->getApplication()->GetWindow())->w;
-    int screenY = SDL_GetWindowSurface(entity->getApplication()->GetWindow())->h;
-    
-    if(xCor > screenX + 50 || xCor < -50 || yCor > screenY + 50 || yCor < -50){
-        
-    }
+    SDL_DisplayMode DM;
+    SDL_GetCurrentDisplayMode(0, &DM);    
+    int screenX = 800;
+    int screenY = 600;
     
     if(xCor > screenX + 50){
         //Rechts uit beeld

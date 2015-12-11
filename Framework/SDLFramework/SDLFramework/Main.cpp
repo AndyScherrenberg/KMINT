@@ -29,8 +29,8 @@ int main()
     
     GameWorld* world = new GameWorld();
 
-	CowEntity* cow = new  CowEntity(world,application);
-	RabbitEntity* rabbit = new RabbitEntity(world,application);
+	CowEntity* cow = new  CowEntity(world);
+	RabbitEntity* rabbit = new RabbitEntity(world);
     
 	application->AddRenderable(cow);
 	application->AddRenderable(rabbit);

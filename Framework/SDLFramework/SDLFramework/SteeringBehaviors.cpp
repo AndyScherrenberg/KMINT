@@ -67,8 +67,8 @@ Vector2D SteeringBehaviors::Flee()
 bool SteeringBehaviors::EntityIsInSpace(){
     float xCor = owner->getPostion().getX();
     float yCor = owner->getPostion().getY();
-    int screenX = SDL_GetWindowSurface(owner->getApplication()->GetWindow())->w;
-    int screenY = SDL_GetWindowSurface(owner->getApplication()->GetWindow())->h;
+    int screenX = 800;
+    int screenY = 600;
     
     if(xCor > screenX + 50 || xCor < -50 || yCor > screenY + 50 || yCor < -50){
         return true;
