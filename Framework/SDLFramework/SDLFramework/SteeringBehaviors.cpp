@@ -120,3 +120,12 @@ Vector2D SteeringBehaviors::Wander()
 	//and steer towards it
 	return m_vWanderTarget - owner->getPostion();
 }
+
+
+
+Vector2D SteeringBehaviors::KeepClose()
+{
+
+
+	return Vector2D(1, 1);
+}

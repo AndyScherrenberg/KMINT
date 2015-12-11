@@ -46,5 +46,9 @@ public:
     Vector2D Pursuit();
 	Vector2D Flee();
 	Vector2D Wander();
+	Vector2D NotCollide();
+	Vector2D KeepClose();
+
     bool EntityIsInSpace();
 };
+
