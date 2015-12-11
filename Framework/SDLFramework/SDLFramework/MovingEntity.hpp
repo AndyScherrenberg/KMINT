@@ -12,7 +12,8 @@
 #include "IGameObject.h"
 #include <stdio.h>
 #include "Vector2D.h"
-#include "SteeringBehaviors.h"
+
+class SteeringBehaviors;
 
 class MovingEntitiy : public IGameObject{
 protected:
@@ -31,13 +32,18 @@ protected:
 
 	MovingEntitiy* target;
 
+	int stateId = 0; 
+	//1 Pursuit
+	//2 Wander
+	//3 Flee
+
 public:
 	virtual void Update(float deltatime);
 	void Draw();
 	void setId(int id){ this->id = id; }
 	int getId(){ return this->id; }
 
-
+	double getSpeed()const{ return velocity.Length(); }
 	void setSteering(SteeringBehaviors* steering){ this->steering = steering; }
 	SteeringBehaviors* getSteering(){ return steering; }
 
@@ -61,6 +67,9 @@ public:
 
 	void SetTarget(MovingEntitiy* entity){ this->target = entity; };
 		MovingEntitiy* getTarget(){ return target; }
+
+		void setStateid(int stateId){ this->stateId = stateId; }
+		int getStateId(){ return this->stateId; }
 };
 
 #endif /* MovingEntity_hpp */

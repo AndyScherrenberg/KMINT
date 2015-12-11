@@ -211,7 +211,7 @@ public:
 			vector.y /= vector_lenght;
 		}
 
-		return vec;
+		return vector;
 	}
 
 	inline Vector2D Perp()const
@@ -231,6 +231,10 @@ public:
 		}
 	}
 
+	inline double Dot(const Vector2D &v2)const
+	{
+		return x*v2.x + y*v2.y;
+	}
 
 
 
