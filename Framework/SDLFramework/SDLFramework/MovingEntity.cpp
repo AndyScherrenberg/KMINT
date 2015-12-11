@@ -7,8 +7,7 @@
 //
 
 #include "MovingEntity.hpp"
-#include <SDL_video.h>
-#include <SDL_render.h>
+
 
 
 void MovingEntitiy::Update(float deltaTime)
