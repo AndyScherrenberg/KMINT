@@ -5,6 +5,10 @@
 
 SteeringBehaviors::~SteeringBehaviors()
 {
+
+
+
+
 }
 
 
@@ -17,7 +21,7 @@ Vector2D SteeringBehaviors::Calculate()
 		return this->Pursuit(); 
 		break;
 	case 2:
-		//return this->Wander();
+		return this->Wander();
 		break;
 	case 3:
 		//return this->Flee();
@@ -33,8 +37,7 @@ Vector2D SteeringBehaviors::Calculate()
 Vector2D SteeringBehaviors::Seek( const Vector2D& TargetPos)
 {
 
-	Vector2D DesiredVelocity; 
-	DesiredVelocity = DesiredVelocity.NormalizeVector(TargetPos - owner->getPostion())
+	Vector2D DesiredVelocity= NormalizeVector(TargetPos - owner->getPostion())
 		* owner->getMaxSpeed();
 	return (DesiredVelocity - owner->getVelocity());
 
@@ -79,5 +82,33 @@ bool SteeringBehaviors::EntityIsInSpace(){
 
 Vector2D SteeringBehaviors::Wander()
 {
-	return Vector2D{ 1, 1 };
+	double JitterThisTimeSlice = m_dWanderJitter * owner->TimeElapsed();
+
+
+	m_vWanderTarget += Vector2D(RandomClamped() * m_dWanderJitter,
+		RandomClamped() * m_dWanderJitter);
+
+
+	//reproject this new vector back on to a unit circle
+//
+
+	
+	m_vWanderTarget = NormalizeVector(m_vWanderTarget);
+
+	//increase the length of the vector to the same as the radius
+	//of the wander circle
+	m_vWanderTarget *= m_dWanderRadius;
+
+	//move the target into a position WanderDist in front of the agent
+	//Vector2D target = m_vWanderTarget + Vector2D(m_dWanderDistance, 0);
+
+	//project the target into world space
+	Vector2D Target = PointToWorldSpace(m_vWanderTarget,
+		owner->getHeading(),
+		owner->getSide(),
+		owner->getPostion());
+		
+	
+	//and steer towards it
+	return m_vWanderTarget - owner->getPostion();
 }

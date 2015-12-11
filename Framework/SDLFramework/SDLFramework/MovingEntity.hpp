@@ -60,6 +60,8 @@ public:
 	void setHeading(Vector2D& heading){ this->heading = heading; }
 	Vector2D getHeading(){ return this->heading; }
 
+
+	Vector2D getSide(){ return this->side; }
 	void setMass(float mass){ this->mass = mass; }
 	float getMass(){ return this->mass; }
 

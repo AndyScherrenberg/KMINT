@@ -20,6 +20,8 @@ MovingEntity::~MovingEntity(){
 
 void MovingEntity::Update(float deltaTime)
 {
+	m_dTimeElapsed = deltaTime;
+
 	Vector2D steeringforce = getSteering()->Calculate(); //Hiet moet nog een goed getal komen : D
 
 	Vector2D acceleration = steeringforce / getMass();
@@ -32,7 +34,7 @@ void MovingEntity::Update(float deltaTime)
 
 	if (velocity.LenghtSq() > 0.00000001)
 	{
-		heading = velocity.NormalizeVector(velocity);
+		heading = NormalizeVector(velocity);
 		
 		side  = heading.Perp();
 	}

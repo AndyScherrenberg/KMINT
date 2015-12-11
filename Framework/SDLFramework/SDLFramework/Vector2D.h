@@ -8,13 +8,14 @@ class Vector2D
 {
 
 private:
-	float x;
-	float y;
+
 public:
 	Vector2D(){};
 	~Vector2D(){};
 
 
+	float x;
+	float y;
 
 	Vector2D(float x, float y){ this->x = x; this->y = y; };
 
@@ -200,19 +201,6 @@ public:
 		}
 	}
 
-	inline Vector2D NormalizeVector(const Vector2D &vec)
-	{
-		Vector2D vector = vec;
-		double vector_lenght = vector.Length();
-
-		if (vector_lenght > std::numeric_limits<double>::epsilon())
-		{
-			vector.x /= vector_lenght;
-			vector.y /= vector_lenght;
-		}
-
-		return vector;
-	}
 
 	inline Vector2D Perp()const
 	{
@@ -244,3 +232,16 @@ public:
 	}
 };
 
+inline Vector2D NormalizeVector(Vector2D &vec)
+{
+	Vector2D vector = vec;
+	double vector_lenght = vector.Length();
+
+	if (vector_lenght > std::numeric_limits<double>::epsilon())
+	{
+		vector.x /= vector_lenght;
+		vector.y /= vector_lenght;
+	}
+
+	return vector;
+}
