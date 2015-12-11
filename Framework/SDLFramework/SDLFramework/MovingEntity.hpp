@@ -33,7 +33,7 @@ protected:
 	float maxForce;
 
 	MovingEntity* target;
-	double                m_dTimeElapsed;
+	double m_dTimeElapsed;
 	int stateId = 0; 
 	//1 Pursuit
 	//2 Wander
