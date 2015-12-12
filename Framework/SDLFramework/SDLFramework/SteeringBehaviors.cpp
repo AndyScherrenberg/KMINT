@@ -18,7 +18,7 @@ Vector2D SteeringBehaviors::Calculate()
 		Vector2D vec{ 0, 0 };
 		vec += this->Pursuit() * 3;
 		vec += this->Cohesion() * 0.3;
-		vec += this->Separation() * 4;
+		vec += this->Separation() * 6;
 		vec.Trunctate(20);
 		 return vec;
 	}

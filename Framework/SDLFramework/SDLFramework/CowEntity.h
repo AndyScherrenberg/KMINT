@@ -12,5 +12,6 @@ public:
 	CowEntity(GameWorld* world);
 	~CowEntity();
 	virtual void Update(float deltatime);
+
 };
 

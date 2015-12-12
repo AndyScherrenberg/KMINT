@@ -100,7 +100,7 @@ public:
 	bool getTagged(){ return this->isTagged; }
 
 	double getBRadius(){
-		return 200*200;
+		return 25;
 	}
 
 	void EnforceNonPenetrationConstraint();

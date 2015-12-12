@@ -47,6 +47,8 @@ void MovingEntity::Update(float deltaTime)
         this->gameWorld->UpdateEntity(this);
     }
 
+	EnforceNonPenetrationConstraint();
+
 
 	//WrapAround(this->postion, SDL_GetWindowSurface(this->mApplication->GetWindow())->w, SDL_GetWindowSurface(this->mApplication->GetWindow())->h);
 }
@@ -57,6 +59,7 @@ void MovingEntity::Draw()
 }
 
 MovingEntity* MovingEntity::getClosestTarget(){
+
 	std::vector<CowEntity*>::iterator it;
 	std::vector<CowEntity*> collection = gameWorld->getCowList();
 	
@@ -76,6 +79,7 @@ MovingEntity* MovingEntity::getClosestTarget(){
 
 void MovingEntity::TagNeighbors(double radius)
 {
+
 	std::vector<CowEntity*>::iterator it;
 	std::vector<CowEntity*> collection = gameWorld->getCowList();
 
@@ -94,4 +98,31 @@ void MovingEntity::TagNeighbors(double radius)
 			}
 		}//next entity
 	
+}
+
+void MovingEntity::EnforceNonPenetrationConstraint()
+{
+	if (!dynamic_cast<CowEntity*>(this)){ return; }
+	//iterate through all entities checking for any overlap of bounding radii
+	std::vector<CowEntity*>::iterator it;
+	std::vector<CowEntity*> collection = gameWorld->getCowList();
+
+	for (std::vector<CowEntity*>::iterator it = collection.begin(); it != collection.end(); ++it){
+		//make sure we don't check against the individual
+		if (*it == this) continue;
+		//calculate the distance between the positions of the entities
+		Vector2D ToEntity = this->getPostion() - (*it)->getPostion();
+		double DistFromEachOther = ToEntity.Length();
+		//if this distance is smaller than the sum of their radii then this
+		//entity must be moved away in the direction parallel to the
+		//ToEntity vector
+		double AmountOfOverLap = (*it)->getBRadius() + this->getBRadius() -
+			DistFromEachOther;
+		if (AmountOfOverLap >= 0)
+		{
+			//move the entity a distance away equivalent to the amount of overlap.
+			this->setPosition(this->getPostion() + (ToEntity / DistFromEachOther) *
+				AmountOfOverLap);
+		}
+	}//next entity
 }

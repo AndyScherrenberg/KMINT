@@ -8,7 +8,7 @@ RabbitEntity::RabbitEntity(GameWorld* world):MovingEntity(world)
 #else
 	this->SetTexture(mApplication->LoadTexture("haas.png"));
 #endif
-	this->setPosition(Vector2D{ 300, 300 });
+	this->setPosition(Vector2D{ 600,300 });
 	this->setMaxSpeed(100);
 	this->setMass(.05f);
 	world->setRabbit(this);

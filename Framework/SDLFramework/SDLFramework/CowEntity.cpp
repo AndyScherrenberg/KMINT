@@ -65,5 +65,8 @@ CowEntity::~CowEntity()
 
 void CowEntity::Update(float deltaTime)
 {
+
 	MovingEntity::Update(deltaTime);
+
 }
+
