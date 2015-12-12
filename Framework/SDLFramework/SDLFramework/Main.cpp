@@ -70,8 +70,11 @@ int main()
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-				case SDLK_SPACE:
-			
+				case SDLK_SPACE:{
+					if (world->getCowList().size() < 26){
+						CowEntity* scow = new  CowEntity(world);
+						scow->setPosition(Vector2D(50, 50));
+					}}
 					break;
 				default:
 					break;
